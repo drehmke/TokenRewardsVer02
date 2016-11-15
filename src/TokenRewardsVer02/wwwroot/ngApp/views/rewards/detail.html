@@ -2,14 +2,14 @@
     <ul class="breadcrumb">
         <li><a href="/rewards">Rewards</a></li>
         <li class="active">Reward Details</li>
-        <li ng-show="account.getClaim('isAdmin')"><a href="/rewards/admin/add">Add A Reward</a></li>
+        <li><a href="/rewards/admin/add">Add A Reward</a></li>
     </ul>
 </div>
 
 <h2>Token Reward: {{c.reward.title}}</h2>
 <div class="clearfix">
-    <a ng-show="account.getClaim('isAdmin')" ng-href="/rewards/admin/delete/{{c.reward.id}}" class="pull-right text-danger"><span class="glyphicon glyphicon-remove-circle adminglyphies"></span></a>
-    <a ng-show="account.getClaim('isAdmin')" ng-href="/rewards/admin/edit/{{c.reward.id}}" class="pull-right"><span class="glyphicon glyphicon-edit adminglyphies"></span></a>
+    <a ng-href="/rewards/admin/delete/{{c.reward.id}}" class="pull-right text-danger"><span class="glyphicon glyphicon-remove-circle adminglyphies"></span></a>
+    <a ng-href="/rewards/admin/edit/{{c.reward.id}}" class="pull-right"><span class="glyphicon glyphicon-edit adminglyphies"></span></a>
     <img ng-src="{{c.reward.image}}" class="pull-right" />
     <h4>Token Cost: {{c.reward.price}}Token(s)</h4>
     <p><strong>Amount: </strong>{{c.reward.mass}}</p>

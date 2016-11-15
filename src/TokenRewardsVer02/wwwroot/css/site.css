@@ -1,3 +1,15 @@
+.logo{ 
+    background-image: url('../images/MystsofEyr_Logo_wide.png'); 
+    height: 200px; background-color: #051F14; 
+    background-attachment: fixed; background-repeat: no-repeat; 
+    background-position: top center;
+}
+
+.navbar-left, .navbar-right { color: white; }
+.navbar-right { margin-right: 20px; }
+.navbar-left { margin-left: 20px; }
+.navbar-left a, .navbar-right a {color: #ddd; }
+.container { background-color: white; height: 100%; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
 .panel { width: 25%; float: left; }
 .adminglyphies { font-size: 1.25em; margin-left: 10px; }
 .achievelistToken { width: 25px; height: 25px; margin: 0 10px 0 0; }

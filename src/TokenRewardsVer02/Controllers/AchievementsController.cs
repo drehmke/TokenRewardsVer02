@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TokenRewardsVer02.Interfaces;
 using TokenRewardsVer02.Models;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,6 +18,7 @@ namespace TokenRewardsVer02.Controllers
 
         // GET: api/achievements
         [HttpGet]
+        [Authorize(Policy = "AdminOnly")]
         public IEnumerable<Achievement> Get()
         {
             return _service.GetAllAchievements();
@@ -31,7 +33,6 @@ namespace TokenRewardsVer02.Controllers
 
         // POST api/achievements
         [HttpPost]
-        [Authorize(Policy = "AdminOnly")]
         public IActionResult Post([FromBody]Achievement achievement)
         {
             _service.SaveAchievement(achievement);
@@ -40,7 +41,6 @@ namespace TokenRewardsVer02.Controllers
 
         // DELETE api/achievements/5
         [HttpDelete("{id}")]
-        [Authorize(Policy = "AdminOnly")]
         public IActionResult Delete(int id)
         {
             _service.DeleteAchievement(id);

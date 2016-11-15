@@ -11,6 +11,10 @@ namespace TokenRewardsVer02.Controllers {
             return this.accountService.getClaim(type);
         }
 
+        public getTokenTotal() {
+            return this.accountService.getTokenTotal();
+        }
+
         public isLoggedIn() {
             return this.accountService.isLoggedIn();
         }

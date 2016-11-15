@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TokenRewardsVer02.Interfaces;
 using TokenRewardsVer02.Models;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -31,7 +32,6 @@ namespace TokenRewardsVer02.Controllers
 
         // POST api/rewards
         [HttpPost]
-        [Authorize(Policy = "AdminOnly")]
         public IActionResult Post([FromBody]Reward reward)
         {
             _service.SaveReward(reward);
@@ -40,7 +40,6 @@ namespace TokenRewardsVer02.Controllers
 
         // DELETE api/rewards/5
         [HttpDelete("{id}")]
-        [Authorize(Policy = "AdminOnly")]
         public IActionResult Delete(int id)
         {
             _service.DeleteReward(id);

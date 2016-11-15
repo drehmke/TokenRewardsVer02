@@ -46,6 +46,22 @@ namespace TokenRewardsVer02.Data
                 };
                 await userManager.CreateAsync(mike, "Secret123!");
             }
+            // Ensure Stephen (IsAdmin)
+            var donna = await userManager.FindByNameAsync("donna@nerdrose.com");
+            if ( donna == null )
+            {
+                // create user
+                donna = new ApplicationUser
+                {
+                    UserName = "donna@nerdrose.com",
+                    Email = "donna@nerdrose.com"
+                };
+                await userManager.CreateAsync(donna, "Secret123!");
+
+                // add claims
+                await userManager.AddClaimAsync(donna, new Claim("IsAdmin", "true"));
+            }
+
 
 
         }

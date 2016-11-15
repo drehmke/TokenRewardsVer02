@@ -9,6 +9,7 @@ namespace TokenRewardsVer02.ViewModels.Account
     public class UserViewModel
     {
         public string UserName { get; set; }
+        public int TokenTotal { get; set; }
 
         public Dictionary<string,string> Claims { get; set; }
     }

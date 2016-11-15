@@ -9,6 +9,10 @@ namespace TokenRewardsVer02.Services {
 
             // store claims
             this.$window.sessionStorage.setItem('claims', JSON.stringify(userInfo.claims));
+
+            // store tokenTotal
+            this.$window.sessionStorage.setItem('tokenTotal', userInfo.tokenTotal);
+
         }
 
         public getUserName() {
@@ -21,6 +25,9 @@ namespace TokenRewardsVer02.Services {
             return allClaims ? allClaims[type] : null;
         }
 
+        public getTokenTotal() {
+            return this.$window.sessionStorage.getItem('tokenTotal');
+        }
 
         public login(loginUser) {
             return this.$q((resolve, reject) => {
