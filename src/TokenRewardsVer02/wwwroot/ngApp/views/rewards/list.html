@@ -1,0 +1,20 @@
+﻿<div>
+    <ul class="breadcrumb">
+        <li class="active">Rewards</li>
+        <li ng-show="account.getClaim('isAdmin')"><a href="/rewards/admin/add">Add A Reward</a></li>
+    </ul>
+</div>
+<h2>Rewards</h2>
+<ul class="panelCollection">
+    <li ng-repeat="reward in c.rewards" class="panel panel-default">
+        <a ng-href="/rewards/{{reward.id}}">
+            <div class="panel-heading rewardHeader"><h3>{{reward.title}}</h3></div>
+            <div class="rewardHeader2"><h4><img src="/images/token.png" class="rewardlistToken" /> X {{reward.price}}</h4></div>
+
+            <div class="panel-body text-center"><img ng-src="{{reward.image}}" /></div>
+            <div class="panel-footer">
+                {{reward.hookText}}
+            </div>
+        </a>
+    </li>
+</ul>

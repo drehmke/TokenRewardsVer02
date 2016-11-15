@@ -1,0 +1,109 @@
+﻿<div>
+    <ul class="breadcrumb">
+        <li><a href="/rewards">Rewards</a></li>
+        <li class="active">Add A Reward</li>
+    </ul>
+</div>
+
+<h2>Add A New Reward</h2>
+<ul>
+    <li ng-repeat="error in c.validationErrors">{{error}}</li>
+</ul>
+<form class="form-horizontal" ng-submit="c.save()">
+    <fieldset>
+        <legend>New Reward Information</legend>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 control-label">Reward Item</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="title" placeholder="Reward Name" autocomplete="off" ng-model="c.reward.title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="image" class="col-lg-2 control-label">Image File Path</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="image" placeholder="Image File Path" autocomplete="off" ng-model="c.reward.image">
+                <span class="help-block">Presuming the file is uploaded already and we just need the path to it.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="price" class="col-lg-2 control-label">Token Price</label>
+            <div class="col-lg-10">
+                <input type="number" class="form-control" id="price" placeholder="Token Price" autocomplete="off" ng-model="c.reward.price">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="mass" class="col-lg-2 control-label">Reward Mass</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="mass" placeholder="Reward Mass" autocomplete="off" ng-model="c.reward.mass">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="hookText" class="col-lg-2 control-label">Hook Text</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="hookText" placeholder="Hook Text" autocomplete="off" ng-model="c.reward.hookText">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-lg-2 control-label">Description</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="description" ng-model="c.reward.description"></textarea>
+                <span class="help-block">Reward item's description goes here.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="limitations" class="col-lg-2 control-label">Item Limitaion</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="limitations" ng-model="c.reward.limitations"></textarea>
+                <span class="help-block">Reward item's terms and conditions, or limitations go here.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="useSamples" class="col-lg-2 control-label">How To Use</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="useSamples" ng-model="c.reward.useSamples"></textarea>
+                <span class="help-block">Use instructions and samples.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="history" class="col-lg-2 control-label">Guide / History</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="history" ng-model="c.reward.history"></textarea>
+                <span class="help-block">A bit of backstory on the reward item.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="restrictions" class="col-lg-2 control-label">Restriction</label>
+            <div class="col-lg-10">
+                <select class="form-control" id="restrictions" ng-model="c.reward.restrictions">
+                    <option value="none">None</option>
+                    <option value="moderate">Moderate</option>
+                    <option value="high">Highly Restricted</option>
+                    <option value="controlled">Controlled</option>
+                    <option value="forbidden">Forbidden</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-lg-2 control-label">Permanancy & Physicality</label>
+            <div class="col-lg-10">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="isPermanent" id="isPermanent" value="true" ng-model="c.reward.isPermanent"> Is the reward item permanent? If not, then it is a one-time use item.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" name="isPhysical" id="isPhysical" value="true" ng-model="c.reward.isPhysical"> Does the reward item have a physical object that represents it? For example: the Mask of the Ancients, or the Glowstone Amulet. If not, then it is something the player has to describe in roleplay, for example: the knife edged with the pure silver they acquired.
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
+<!-- TODO: Add file upload handling - reward image -->

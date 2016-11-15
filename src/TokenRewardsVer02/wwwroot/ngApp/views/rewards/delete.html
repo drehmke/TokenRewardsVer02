@@ -1,0 +1,24 @@
+﻿<div>
+    <ul class="breadcrumb">
+        <li><a href="/rewards">Rewards</a></li>
+        <li class="active">Reward Details</li>
+        <li><a href="/rewards/admin/add">Add A Reward</a></li>
+    </ul>
+</div>
+
+<h3 class="text-center text-danger">Are you sure you wantto delete token reward: {{c.reward.title}}</h3>
+<div class="clearfix">
+    <a ng-href="/rewards/admin/edit/{{c.reward.id}}" class="pull-right"><span class="glyphicon glyphicon-edit"></span></a>
+    <img ng-src="{{c.reward.image}}" class="pull-right" />
+    <h4>Token Cost: {{c.reward.price}}Token(s)</h4>
+    <p><strong>Amount: </strong>{{c.reward.mass}}</p>
+    <p ng-if="c.reward.restrictions != ''"><strong>Restriction Level: </strong>{{c.reward.restrictions}} (<a href="http://mystsofeyr.com/index.php/lore2/controlled-substances-in-eyr" target="_blank">Find out more about restriction levels</a>.)</p>
+    <p><strong>Description:</strong>{{c.reward.description}}</p>
+    <p ng-if="c.reward.limitations != ''"><strong>Item Limitations: </strong>{{c.reward.limitations}}</p>
+    <p ng-if="c.reward.useSamples != ''"><strong>Usage Ideas: </strong>{{c.reward.useSamples}}</p>
+    <p ng-if="c.reward.history != ''"><strong>A Little History: </strong>{{c.reward.history}}</p>
+
+    <div class="text-center">
+        <button class="btn btn-danger" ng-click="c.delete()">Yes - Delete This Reward Item</button>
+    </div>
+</div>

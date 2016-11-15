@@ -1,0 +1,30 @@
+﻿<div>
+    <ul class="breadcrumb">
+        <li class="active">Achievements</li>
+        <li ng-show="account.getClaim('isAdmin')"><a href="/achievements/admin/add">Add An Achievement</a></li>
+    </ul>
+</div>
+<div class="clearfix">
+    <h2 class="pull-left">Achievements</h2>
+    <select name="category" ng-model="showCategory" class="pull-right">
+        <option value="">-- All Achievments --</option>
+        <option value="catGeneral">General</option>
+        <option value="catFaction">Faction</option>
+        <option value="catPlayer">Player</option>
+    </select>
+</div>
+<ul class="list-group">
+    <li class="list-group-item" ng-repeat="achieve in c.achievements | filter: showCategory">
+        <a ng-show="account.getClaim('isAdmin')" g-href="/achievements/admin/delete/{{achieve.id}}" class="pull-right text-danger"><span class="glyphicon glyphicon-remove-circle adminglyphies"></span></a>
+        <a ng-show="account.getClaim('isAdmin')" ng-href="/achievements/admin/edit/{{achieve.id}}" class="pull-right"><span class="glyphicon glyphicon-edit  adminglyphies"></span></a>
+        <h4 class="list-group-item-heading">{{achieve.title}}</h4>
+        <p class="list-group-item-text">
+            <div class="text-default">{{achieve.description}}</div>
+            <div class="unlocked"><img src="/images/token.png" class="icon-token achievelistToken" /><strong>Token Unlocked</strong> - {{achieve.unlocked}}</div>
+            <div class="list-group-links clearfix">
+                <a ng-if="achieve.linkTitle != ''" href="{{achieve.linkUrl}}" class="btn btn-primary pull-left" target="_blank">{{achieve.linkTitle}}</a>
+                <button class="btn btn-success pull-right" ng-click="c.unlockAchievement(achieve.id)">Unlock Achievement</button>
+            </div>
+        </p>
+    </li>
+</ul>

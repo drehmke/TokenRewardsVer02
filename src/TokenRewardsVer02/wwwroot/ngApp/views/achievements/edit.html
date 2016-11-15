@@ -1,0 +1,64 @@
+﻿<div>
+    <ul class="breadcrumb">
+        <li><a href="/achievements">Achievements</a></li>
+        <li class="active">Update Achievement</li>
+        <li ng-show="account.getClaim('isAdmin')"><a href="/achievements/admin/add">Add An Achievement</li>
+    </ul>
+</div>
+<h2>Update An Achievement</h2>
+<ul>
+    <li ng-repeat="error in c.validationErrors">{{error}}</li>
+</ul>
+<form class="form-horizontal" ng-submit="c.save()">
+    <fieldset>
+        <legend>Update Achievment Information for {{c.achievement.title}}</legend>
+        <div class="form-group">
+            <label for="title" class="col-lg-2 control-label">Achievement Title</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="title" placeholder="Achievement Title" autocomplete="off" ng-model="c.achievement.title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="category" class="col-lg-2 control-label">Category</label>
+            <div class="col-lg-10">
+                <select class="form-control" id="category" ng-model="c.achievement.category">
+                    <option value="catGeneral">General</option>
+                    <option value="catFaction">Faction</option>
+                    <option value="catPlayer">Player</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-lg-2 control-label">Description</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="description" ng-model="c.achievement.description"></textarea>
+                <span class="help-block">Information on how to earn this token achievement goes here.</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="unlocked" class="col-lg-2 control-label">Unlocked</label>
+            <div class="col-lg-10">
+                <textarea class="form-control" rows="3" id="unlocked" ng-model="c.achievement.unlocked"></textarea>
+                <span class="help-block">Information on what it means to unlock this achievement</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="linkTitle" class="col-lg-2 control-label">More Info Button Text</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="linkTitle" placeholder="More Info Title" autocomplete="off" ng-model="c.achievement.linkTitle">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="linkUrl" class="col-lg-2 control-label">More Info URL</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="linkUrl" placeholder="More Info Link" autocomplete="off" ng-model="c.achievement.linkUrl">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

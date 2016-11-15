@@ -1,0 +1,34 @@
+<h1>Register</h1>
+<fieldset>
+    <legend>Token Reward Shop Registration</legend>
+    <ul>
+        <li ng-repeat="message in controller.validationMessages" class="alert alert-danger">
+            {{message}}
+        </li>
+    </ul>
+
+    <form ng-submit="c.register()" class="form-horizontal">
+        <div class="form-group">
+            <label for="email" class="col-lg-2 control-label">Email:</label>
+            <div class="col-lg-10">
+                <input type="email" class="form-control" id="email" placeholder="Email Address" autocomplete="off" ng-model="c.registerUser.email" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-lg-2 control-label">Password:</label>
+            <div class="col-lg-10">
+                <input type="password" class="form-control" id="password" autocomplete="off" ng-model="c.registerUser.password" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword" class="col-lg-2 control-label">Confirm Password:</label>
+            <div class="col-lg-10">
+                <input type="password" class="form-control" id="passwordConfirm" autocomplete="off" ng-model="c.registerUser.confirmPassword" />
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Register" class="btn btn-primary col-lg-offset-2" />
+        </div>
+    </form>
+
+</fieldset>
