@@ -17,13 +17,14 @@
     <li class="list-group-item" ng-repeat="achieve in c.achievements | filter: showCategory">
         <a ng-href="/achievements/admin/delete/{{achieve.id}}" class="pull-right text-danger"><span class="glyphicon glyphicon-remove-circle adminglyphies"></span></a>
         <a ng-href="/achievements/admin/edit/{{achieve.id}}" class="pull-right"><span class="glyphicon glyphicon-edit  adminglyphies"></span></a>
-        <h4 class="list-group-item-heading">{{achieve.title}}</h4>
+        
+        <h4 class="list-group-item-heading">{{achieve.title}}    <span class="achievementValue"><img src="/images/token.png" class="achievelistToken" />x {{achieve.tokenValue}}</span></h4>
         <p class="list-group-item-text">
             <div class="text-default">{{achieve.description}}</div>
             <div class="unlocked"><img src="/images/token.png" class="icon-token achievelistToken" /><strong>Token Unlocked</strong> - {{achieve.unlocked}}</div>
             <div class="list-group-links clearfix">
-                <a ng-if="achieve.linkTitle != ''" href="{{achieve.linkUrl}}" class="btn btn-primary pull-left" target="_blank">{{achieve.linkTitle}}</a>
-                <button class="btn btn-success pull-right" ng-click="c.unlockAchievement(achieve.id)">Unlock Achievement</button>
+                <a ng-if="achieve.linkTitle" href="{{achieve.linkUrl}}" class="btn btn-primary pull-left" target="_blank">{{achieve.linkTitle}}</a>
+                <a class="btn btn-success pull-right" ng-href="/achievements/claim/{{achieve.id}}">Unlock Achievement</a>
             </div>
         </p>
     </li>

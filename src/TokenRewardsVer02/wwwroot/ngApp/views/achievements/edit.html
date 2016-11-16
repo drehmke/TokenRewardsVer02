@@ -1,7 +1,7 @@
 ﻿<div>
     <ul class="breadcrumb">
         <li><a href="/achievements">Achievements</a></li>
-        <li><a href="/achievements/admin/add">Add An Achievement</li>
+        <li><a href="/achievements/admin/add">Add An Achievement</a></li>
         <li class="active">Update Achievement</li>
     </ul>
 </div>
@@ -16,6 +16,12 @@
             <label for="title" class="col-lg-2 control-label">Achievement Title</label>
             <div class="col-lg-10">
                 <input type="text" class="form-control" id="title" placeholder="Achievement Title" autocomplete="off" ng-model="c.achievement.title">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tokenValue" class="col-lg-2 control-label">Achievement Value</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="tokenValue" placeholder="Achievement Value" autocomplete="off" ng-model="c.achievement.tokenValue">
             </div>
         </div>
         <div class="form-group">

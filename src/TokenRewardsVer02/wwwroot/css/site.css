@@ -1,7 +1,7 @@
 .logo{ 
     background-image: url('../images/MystsofEyr_Logo_wide.png'); 
     height: 200px; background-color: #051F14; 
-    background-attachment: fixed; background-repeat: no-repeat; 
+    background-repeat: no-repeat; 
     background-position: top center;
 }
 
@@ -14,6 +14,7 @@
 .adminglyphies { font-size: 1.25em; margin-left: 10px; }
 .achievelistToken { width: 25px; height: 25px; margin: 0 10px 0 0; }
 .unlocked { font-style: italic; margin: 10px 0; border-top: 1px dashed #ddd; padding-top: 10px; }
+.achievementValue { margin-left: 20px; font-size: .98em; }
 
 .panelCollection { list-style: none; padding: 0; margin: 0; }
 .panel a { text-decoration: none; color: #000; }
@@ -22,3 +23,5 @@
 .rewardHeader2 { background-color: #379f8c; color: white; }
 .rewardHeader h3, .rewardHeader2 h4 { color: white; text-align: center; margin: 0; padding: 0; }
 .rewardHeader2 h4{ padding: 10px 0; }
+
+.offImage { margin-right: 30%; }

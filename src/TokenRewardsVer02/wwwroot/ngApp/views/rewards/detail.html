@@ -3,15 +3,15 @@
         <li><a href="/rewards">Rewards</a></li>
         <li class="active">Reward Details</li>
         <li><a href="/rewards/admin/add">Add A Reward</a></li>
+        <a ng-href="/rewards/admin/delete/{{c.reward.id}}" class="pull-right text-danger"><span class="glyphicon glyphicon-remove-sign adminglyphies"></span></a>
+        <a ng-href="/rewards/admin/edit/{{c.reward.id}}" class="pull-right"><span class="glyphicon glyphicon-edit adminglyphies"></span></a>
     </ul>
 </div>
 
 <h2>Token Reward: {{c.reward.title}}</h2>
 <div class="clearfix">
-    <a ng-href="/rewards/admin/delete/{{c.reward.id}}" class="pull-right text-danger"><span class="glyphicon glyphicon-remove-circle adminglyphies"></span></a>
-    <a ng-href="/rewards/admin/edit/{{c.reward.id}}" class="pull-right"><span class="glyphicon glyphicon-edit adminglyphies"></span></a>
     <img ng-src="{{c.reward.image}}" class="pull-right" />
-    <h4>Token Cost: {{c.reward.price}}Token(s)</h4>
+    <h5>Token Cost: {{c.reward.price}} x <img src="/images/token.png" class="rewardlistToken" /> <a class="pull-right btn btn-success offImage" ng-href="/rewards/claim/{{c.reward.id}}">Buy This Reward!</a></h5>
     <p><strong>Amount: </strong>{{c.reward.mass}}</p>
     <p ng-if="c.reward.restrictions != ''"><strong>Restriction Level: </strong>{{c.reward.restrictions}} (<a href="http://mystsofeyr.com/index.php/lore2/controlled-substances-in-eyr" target="_blank">Find out more about restriction levels</a>.)</p>
     <p><strong>Description:</strong>{{c.reward.description}}</p>

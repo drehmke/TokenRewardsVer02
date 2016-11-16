@@ -8,9 +8,10 @@ using TokenRewardsVer02.Data;
 namespace TokenRewardsVer02.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161115165817_addingJoinBetweenUsersAchievements")]
+    partial class addingJoinBetweenUsersAchievements
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -138,8 +139,6 @@ namespace TokenRewardsVer02.Data.Migrations
 
                     b.Property<string>("Title");
 
-                    b.Property<int>("TokenValue");
-
                     b.Property<string>("Unlocked");
 
                     b.HasKey("Id");
@@ -176,6 +175,8 @@ namespace TokenRewardsVer02.Data.Migrations
                     b.Property<string>("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed");
+
+                    b.Property<string>("SecondLife");
 
                     b.Property<string>("SecurityStamp");
 
@@ -249,21 +250,6 @@ namespace TokenRewardsVer02.Data.Migrations
                     b.ToTable("UserAchievements");
                 });
 
-            modelBuilder.Entity("TokenRewardsVer02.Models.UserRewards", b =>
-                {
-                    b.Property<string>("UserId");
-
-                    b.Property<int>("RewardId");
-
-                    b.HasKey("UserId", "RewardId");
-
-                    b.HasIndex("RewardId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserRewards");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
@@ -311,19 +297,6 @@ namespace TokenRewardsVer02.Data.Migrations
                     b.HasOne("TokenRewardsVer02.Models.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("TokenRewardsVer02.Models.UserRewards", b =>
-                {
-                    b.HasOne("TokenRewardsVer02.Models.Reward", "Reward")
-                        .WithMany()
-                        .HasForeignKey("RewardId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("TokenRewardsVer02.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

@@ -18,7 +18,6 @@ namespace TokenRewardsVer02.Controllers
 
         // GET: api/achievements
         [HttpGet]
-        [Authorize(Policy = "AdminOnly")]
         public IEnumerable<Achievement> Get()
         {
             return _service.GetAllAchievements();
@@ -38,6 +37,7 @@ namespace TokenRewardsVer02.Controllers
             _service.SaveAchievement(achievement);
             return Ok(achievement);
         }
+
 
         // DELETE api/achievements/5
         [HttpDelete("{id}")]

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using TokenRewardsVer02.Interfaces;
 using TokenRewardsVer02.Models;
@@ -10,6 +12,7 @@ namespace TokenRewardsVer02.Services
     public class AchievementService : IAchievementService
     {
         private IGenericRepository _repo;
+        
 
         // ---- Basic CRUD -------------------------------------------------------
         public IList<Achievement> GetAllAchievements()
@@ -40,6 +43,8 @@ namespace TokenRewardsVer02.Services
         }
         // ---- End Basic CRUD ---------------------------------------------------
         // ---- If adding anything below this line - re-extract the Interface ----
+        // add to parameters: IPrincipal user
+        // inside method: user.FindByNameAsync(user.Identity.Name)
 
         public AchievementService(IGenericRepository repo)
         {

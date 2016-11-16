@@ -25,10 +25,6 @@ namespace TokenRewardsVer02.Services {
             return allClaims ? allClaims[type] : null;
         }
 
-        public getTokenTotal() {
-            return this.$window.sessionStorage.getItem('tokenTotal');
-        }
-
         public login(loginUser) {
             return this.$q((resolve, reject) => {
                 this.$http.post('/api/account/login', loginUser).then((result) => {

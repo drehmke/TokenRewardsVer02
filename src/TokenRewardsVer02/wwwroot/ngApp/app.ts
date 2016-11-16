@@ -62,6 +62,13 @@ namespace TokenRewardsVer02 {
                 controller: TokenRewardsVer02.Controllers.AchievementsDeleteController,
                 controllerAs: `c`
             })
+            // ---- achievement claims states ---------------------------------
+            .state(`claimAchievement`, {
+                url: `/achievements/claim/:id`,
+                templateUrl: `/ngApp/views/userAchievements/claim.html`,
+                controller: TokenRewardsVer02.Controllers.UserClaimAchievementController,
+                controllerAs: `c`
+            })
             // ---- Reward States ---------------------------------------------
             .state(`rewards`, {
                 url: `/rewards`,
@@ -91,6 +98,13 @@ namespace TokenRewardsVer02 {
                 url: `/rewards/admin/delete/:id`,
                 templateUrl: `/ngApp/views/rewards/delete.html`,
                 controller: TokenRewardsVer02.Controllers.RewardDeleteController,
+                controllerAs: `c`
+            })
+            // ---- reward claims states --------------------------------------
+            .state(`claimReward`, {
+                url: `/rewards/claim/:id`,
+                templateUrl: `/ngApp/views/userRewards/claim.html`,
+                controller: TokenRewardsVer02.Controllers.UserClaimRewardController,
                 controllerAs: `c`
             })
             // ----------------------------------------------------------------

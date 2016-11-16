@@ -14,5 +14,6 @@ namespace TokenRewardsVer02.Models
         public string Unlocked { get; set; }
         public string LinkTitle { get; set; }
         public string LinkUrl { get; set; }
+        public int TokenValue { get; set; }
     }
 }

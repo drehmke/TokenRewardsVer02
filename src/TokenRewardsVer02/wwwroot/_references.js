@@ -14,5 +14,7 @@
 /// <reference path="ngapp/controllers/achievementcontroller.js" />
 /// <reference path="ngapp/controllers/controllers.js" />
 /// <reference path="ngapp/controllers/rewardscontroller.js" />
+/// <reference path="ngapp/controllers/userachievementscontroller.js" />
+/// <reference path="ngapp/controllers/userrewardscontroller.js" />
 /// <reference path="ngapp/services/accountservice.js" />
 /// <reference path="ngapp/services/services.js" />

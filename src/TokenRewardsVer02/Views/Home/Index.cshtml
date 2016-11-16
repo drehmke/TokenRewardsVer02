@@ -15,7 +15,7 @@
                 <div class="navbar-left">
                     <a href="/">Home</a> |
                     <a href="/achievements">Achievements</a> |
-                    <a href="/rewards">Rewards</a> |
+                    <a href="/rewards">Rewards</a>
                 </div>
 
 
@@ -23,7 +23,7 @@
                     <a href="/login" ng-show="!account.isLoggedIn()">Login &nbsp;<span class="glyphicon glyphicon-log-in"></span></a>
                     <a href="#" ng-click="account.logout()" ng-show="account.isLoggedIn()">Logout &nbsp;<span class="glyphicon glyphicon-log-out"></span></a>
                     <div ng-show="account.isLoggedIn()" class="pull-left">
-                        {{account.getUserName()}} <span class="badge">{{account.getTokenTotal()}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{account.getUserName()}} &nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                 </div>
             </div>
@@ -45,6 +45,8 @@
     <script src="/ngapp/controllers/controllers.js"></script>
     <script src="~/ngApp/controllers/achievementController.js"></script>
     <script src="~/ngApp/controllers/rewardsController.js"></script>
+    <script src="~/ngApp/controllers/userAchievementsController.js"></script>
+    <script src="~/ngApp/controllers/userRewardsController.js"></script>
     <script src="/ngapp/services/services.js"></script>
 
 
