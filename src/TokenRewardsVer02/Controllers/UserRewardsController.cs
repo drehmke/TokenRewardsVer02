@@ -15,6 +15,13 @@ namespace TokenRewardsVer02.Controllers
     {
         private IUserRewardService _service;
 
+        [HttpGet("GetRewards/{userName}")]
+        public IActionResult GetRewards(string userName)
+        {
+            var list = _service.GetRewardsByUserName(userName);
+            return Ok(list);
+        }
+
         [HttpPost]
         public IActionResult Post([FromBody]UserRewards userRewards)
         {

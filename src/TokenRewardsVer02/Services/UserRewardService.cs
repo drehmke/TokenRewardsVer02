@@ -17,10 +17,19 @@ namespace TokenRewardsVer02.Services
             return _repo.Query<UserRewards>().ToList();
         }
 
-        public IList<UserRewards> GetRewardsByUserId(string userId)
-        {   // get rewards by user
-            List<UserRewards> userRewards = _repo.Query<UserRewards>().Where(ur => ur.UserId == userId).ToList();
-            return userRewards;
+        public IList<Reward> GetRewardsByUserName(string userName)
+        {   // get rewards by userId when we pass the userName - so we need to find the user's ID based on the userName
+            ApplicationUser user = _repo.Query<ApplicationUser>().Where(u => u.UserName == userName).FirstOrDefault();
+            IList<UserRewards> allRecords = _repo.Query<UserRewards>().ToList();
+            IList<Reward> rewardsList = new List<Reward>();
+            foreach( UserRewards r in allRecords)
+            {
+                if(user.Id == r.UserId)
+                {
+                    rewardsList.Add(_rservice.GetRewardById(r.RewardId));
+                }
+            }
+            return rewardsList;
         }
 
         public void ClaimReward(string userId, int rewardId)

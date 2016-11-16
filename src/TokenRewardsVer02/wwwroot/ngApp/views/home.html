@@ -1,4 +1,37 @@
 <h2>Home</h2>
-<p>
-    {{controller.message}}
-</p>
+<div>
+    Welcome, {{account.getUserName()}}! Here is a list of your currently unlocked acheivements and purchased rewards!
+
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="panel homePanel">
+            <div class="panel-heading"><h4>Claimed Achievements</h4></div>
+            <div class="panel-body">
+                <ul>
+                    <li ng-repeat="achievement in c.achievementList">
+                        {{achievement.title}}
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-footer">
+                Want to add more to this list? Check the <a href="/achievements">list of achievements</a> to see what else you can unlock!
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <div class="panel homePanel">
+            <div class="panel-heading"><h4>Purchased Rewards</h4></div>
+            <div class="panel-body">
+                <ul>
+                    <li ng-repeat="reward in c.rewardList">
+                        {{reward.title}}
+                    </li>
+                </ul>
+            </div>
+            <div class="panel-footer">
+                Want to add more to this list? Check the <a href="/rewards">list of rewards</a> to see what else you can purchase!
+            </div>
+        </div>    </div>
+</div>

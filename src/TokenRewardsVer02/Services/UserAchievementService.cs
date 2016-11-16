@@ -16,7 +16,7 @@ namespace TokenRewardsVer02.Services
     {
         private IGenericRepository _repo;
         private IAchievementService _aservice;
-        private readonly UserManager<ApplicationUser> _userManager;
+        //private readonly UserManager<ApplicationUser> _userManager;
 
         // ---- Basic CRUD ----------------------------------------------------
         public IList<UserAchievements> GetAllUserAchievements()
@@ -24,12 +24,19 @@ namespace TokenRewardsVer02.Services
             return _repo.Query<UserAchievements>().ToList();
         }
 
-        public IList<UserAchievements> GetAchievementsByUserName(string userId)
-        { // get achievements by user
-            List<UserAchievements> usersAchievements = _repo.Query<UserAchievements>().Where(ua => ua.UserID == userId).ToList();
-
-
-            return usersAchievements;
+        public IList<Achievement> GetAchievementsByUserName(string userName)
+        { // get achievements by userId when we pass the userName - so we need to find the user's ID based on the userName
+            var user = _repo.Query<ApplicationUser>().Where(u => u.UserName == userName).FirstOrDefault();
+            IList<UserAchievements> allRecords = _repo.Query<UserAchievements>().ToList();
+            IList<Achievement> achievementsList = new List<Achievement>();
+            foreach( UserAchievements a in allRecords)
+            {
+                if( user.Id == a.UserID)
+                {
+                    achievementsList.Add(_aservice.GetByAchievementId(a.AchievementId));
+                }
+            }
+            return achievementsList;
         }
 
         

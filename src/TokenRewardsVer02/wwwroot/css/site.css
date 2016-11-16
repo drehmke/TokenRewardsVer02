@@ -11,6 +11,7 @@
 .navbar-left a, .navbar-right a {color: #ddd; }
 .container { background-color: white; height: 100%; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
 .panel { width: 25%; float: left; }
+.homePanel {width: 100%; }
 .adminglyphies { font-size: 1.25em; margin-left: 10px; }
 .achievelistToken { width: 25px; height: 25px; margin: 0 10px 0 0; }
 .unlocked { font-style: italic; margin: 10px 0; border-top: 1px dashed #ddd; padding-top: 10px; }

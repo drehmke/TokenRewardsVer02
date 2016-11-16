@@ -7,6 +7,6 @@ namespace TokenRewardsVer02.Interfaces
     {
         void ClaimReward(string userId, int rewardId);
         IList<UserRewards> GetAllUserRewards();
-        IList<UserRewards> GetRewardsByUserId(string userId);
+        IList<Reward> GetRewardsByUserName(string userId);
     }
 }

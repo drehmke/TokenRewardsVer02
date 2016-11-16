@@ -22,7 +22,12 @@ namespace TokenRewardsVer02.Controllers
 
 
         // GET api/userachievements/5
-        //[HttpGet("{userId}")]
+        [HttpGet("GetAchievements/{userName}")]
+        public IActionResult GetAchievements(string userName)
+        {
+            var list = _service.GetAchievementsByUserName(userName);
+            return Ok(list);
+        }
 
 
         // POST api/userachievements
