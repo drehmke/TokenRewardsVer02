@@ -25,4 +25,14 @@
 .rewardHeader h3, .rewardHeader2 h4 { color: white; text-align: center; margin: 0; padding: 0; }
 .rewardHeader2 h4{ padding: 10px 0; }
 
+.userListImage { width: 50px; margin-right: 10px; }
+
 .offImage { margin-right: 30%; }
+
+.grad {
+    background: #d4ebe7; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#d4ebe7, #fff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#d4ebe7, #fff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#d4ebe7, #fff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#d4ebe7, #fff); /* Standard syntax */
+}

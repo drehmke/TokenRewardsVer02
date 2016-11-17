@@ -14,7 +14,7 @@
     </select>
 </div>
 <ul class="list-group">
-    <li class="list-group-item" ng-repeat="achieve in c.achievements | filter: showCategory">
+    <li class="list-group-item" ng-repeat="achieve in c.achievements | filter: showCategory" id="{{achieve.id}}">
         <a ng-href="/achievements/admin/delete/{{achieve.id}}" class="pull-right text-danger"><span class="glyphicon glyphicon-remove-circle adminglyphies"></span></a>
         <a ng-href="/achievements/admin/edit/{{achieve.id}}" class="pull-right"><span class="glyphicon glyphicon-edit  adminglyphies"></span></a>
         
