@@ -1,5 +1,5 @@
 ﻿<div>
-    <ul class="breadcrumb">
+    <ul class="breadcrumb" ng-show="account.isLoggedIn()">
         <li class="active">Achievements</li>
         <li><a href="/achievements/admin/add">Add An Achievement</a></li>
     </ul>
@@ -8,9 +8,7 @@
     <h2 class="pull-left">Achievements</h2>
     <select name="category" ng-model="showCategory" class="pull-right">
         <option value="">-- All Achievments --</option>
-        <option value="catGeneral">General</option>
-        <option value="catFaction">Faction</option>
-        <option value="catPlayer">Player</option>
+        <option ng-repeat="cat in c.categories" value="{{cat.filterCategory}}">{{cat.name}}</option>
     </select>
 </div>
 <ul class="list-group">
@@ -20,7 +18,7 @@
         
         <h4 class="list-group-item-heading">{{achieve.title}}    <span class="achievementValue"><img src="/images/token.png" class="achievelistToken" />x {{achieve.tokenValue}}</span></h4>
         <p class="list-group-item-text">
-            <div class="text-default">{{achieve.description}}</div>
+            <div class="text-default">{{achieve.category}}{{achieve.description}}</div>
             <div class="unlocked"><img src="/images/token.png" class="icon-token achievelistToken" /><strong>Token Unlocked</strong> - {{achieve.unlocked}}</div>
             <div class="list-group-links clearfix">
                 <a ng-if="achieve.linkTitle" href="{{achieve.linkUrl}}" class="btn btn-primary pull-left" target="_blank">{{achieve.linkTitle}}</a>

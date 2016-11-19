@@ -1,3 +1,9 @@
+body {
+    background-image: url('../images/background.png');
+    background-attachment: fixed;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
 .logo{ 
     background-image: url('../images/MystsofEyr_Logo_wide.png'); 
     height: 200px; background-color: #051F14; 
@@ -9,7 +15,7 @@
 .navbar-right { margin-right: 20px; }
 .navbar-left { margin-left: 20px; }
 .navbar-left a, .navbar-right a {color: #ddd; }
-.container { background-color: white; height: 100%; border-left: 1px solid #ddd; border-right: 1px solid #ddd; }
+.container { background-color: white; height: 100%; /*border-left: 1px solid #ddd; border-right: 1px solid #ddd;*/ }
 .panel { width: 25%; float: left; }
 .homePanel {width: 100%; }
 .adminglyphies { font-size: 1.25em; margin-left: 10px; }
@@ -29,10 +35,11 @@
 
 .offImage { margin-right: 30%; }
 
-.grad {
-    background: #d4ebe7; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#d4ebe7, #fff); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#d4ebe7, #fff); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#d4ebe7, #fff); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#d4ebe7, #fff); /* Standard syntax */
-}
+
+/*.grad {
+    background: #eff3dd; /* For browsers that do not support gradients 
+    background: -webkit-linear-gradient(#eff3dd, #fff);  For Safari 5.1 to 6.0 
+    background: -o-linear-gradient(#eff3dd, #fff);  For Opera 11.1 to 12.0 
+    background: -moz-linear-gradient(#eff3dd, #fff);  For Firefox 3.6 to 15 
+    background: linear-gradient(#eff3dd, #fff);  Standard syntax 
+}*/

@@ -21,8 +21,8 @@
         public reward;
         
         public save() {
-            console.log(this.reward);
-            this.RewardResource.save(this.reward).$promise
+            let userName = this.accountService.getUserName();
+            this.RewardResource.save({ userName: userName }, this.reward).$promise
                 .then(() => {
                     this.reward = null;
                     this.$state.go(`rewards`);
@@ -31,6 +31,7 @@
 
         constructor(
             private $resource: angular.resource.IResourceService,
+            private accountService: TokenRewardsVer02.Services.AccountService,
             private $state: ng.ui.IStateService
         ) {
             this.RewardResource = $resource(`/api/rewards/`);

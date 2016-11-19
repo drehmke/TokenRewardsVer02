@@ -31,9 +31,10 @@ namespace TokenRewardsVer02.Controllers
         }
 
         // POST api/rewards
-        [HttpPost]
-        public IActionResult Post([FromBody]Reward reward)
+        [HttpPost("{userName}")]
+        public IActionResult Post(string userName, [FromBody]Reward reward)
         {
+            string usr = userName;
             _service.SaveReward(reward);
             return Ok(reward);
         }

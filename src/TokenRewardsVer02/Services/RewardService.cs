@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System.Security.Principal;
+using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,10 +13,13 @@ namespace TokenRewardsVer02.Services
     public class RewardService : IRewardService
     {
         private IGenericRepository _repo;
+        
 
         // ---- Basic CRUD ------------------------------------------------------
         public IList<Reward> GetAllRewards()
         {
+            //var test = System.Security.Claims.ClaimsPrincipal.Current.Identity.Name;
+            
             return _repo.Query<Reward>().ToList();
         }
 
