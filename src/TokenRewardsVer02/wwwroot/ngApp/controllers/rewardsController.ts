@@ -21,8 +21,7 @@
         public reward;
         
         public save() {
-            let userName = this.accountService.getUserName();
-            this.RewardResource.save({ userName: userName }, this.reward).$promise
+            this.RewardResource.save(this.reward).$promise
                 .then(() => {
                     this.reward = null;
                     this.$state.go(`rewards`);

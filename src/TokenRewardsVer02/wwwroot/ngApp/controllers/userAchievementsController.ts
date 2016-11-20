@@ -2,12 +2,12 @@
 
     export class UserClaimAchievementController {
         private UserAchievementResource;
-        private achievementId;
+        //private achievementId;
         
         // save it
-        public claim() {
+        public claim( id: number ) {
             //let userName = this.accountService.getUserName();
-            this.UserAchievementResource.save({ achievementId: this.achievementId }).$promise
+            this.UserAchievementResource.save({ achievementId: id }).$promise
                 .then(() => {
                     this.$state.go(`home`)
                 });
@@ -20,7 +20,8 @@
             private accountService: TokenRewardsVer02.Services.AccountService
         ) {
             this.UserAchievementResource = $resource(`/api/userachievements/`);
-            this.achievementId = $stateParams[`id`];
+            //this.achievementId = $stateParams[`id`];
+            this.claim($stateParams[`id`]);
         }
     }
 

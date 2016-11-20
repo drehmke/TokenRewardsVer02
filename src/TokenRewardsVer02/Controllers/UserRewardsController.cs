@@ -15,9 +15,10 @@ namespace TokenRewardsVer02.Controllers
     {
         private IUserRewardService _service;
 
-        [HttpGet("GetRewards/{userName}")]
-        public IActionResult GetRewards(string userName)
+        [HttpGet("GetRewards/")]
+        public IActionResult GetRewards()
         {
+            string userName = this.User.Identity.Name;
             var list = _service.GetRewardsByUserName(userName);
             return Ok(list);
         }
@@ -25,7 +26,8 @@ namespace TokenRewardsVer02.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]UserRewards userRewards)
         {
-            _service.ClaimReward(userRewards.UserId, userRewards.RewardId);
+            string userName = this.User.Identity.Name;
+            _service.ClaimReward(userName, userRewards.RewardId);
             return Ok();
         }
 

@@ -7,12 +7,12 @@ namespace TokenRewardsVer02.Controllers {
         public rewardList;
 
         public getAList() {
-            let userName = this.accountService.getUserName();
+            //let userName = this.accountService.getUserName();
             return this.UserAchievementResource.getList();
         }
         public getRList() {
-            let userName = this.accountService.getUserName();
-            return this.UserRewardResource.getRewards({userName: userName });
+            //let userName = this.accountService.getUserName();
+            return this.UserRewardResource.getRewards();
         }
         
         constructor(
@@ -29,13 +29,12 @@ namespace TokenRewardsVer02.Controllers {
             this.UserRewardResource = $resource(`/api/userRewards/`, null, {
                 getRewards: {
                     method: 'GET',
-                    url: `/api/userRewards/GetRewards/:userName`,
+                    url: `/api/userRewards/GetRewards/`,
                     isArray: true
                 }   
             });
             this.achievementList = this.getAList();
             this.rewardList = this.getRList();
-            console.log(this.achievementList);
         }
     }
     
