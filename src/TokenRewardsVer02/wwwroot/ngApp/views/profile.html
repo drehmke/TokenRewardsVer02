@@ -1,5 +1,4 @@
-<h2>Home</h2>
-<div id="loggedIn" ng-if="account.isLoggedIn()">
+﻿<div id="loggedIn">
     <div class="lead">
         Welcome, {{account.getUserName()}}! Here is a list of your currently unlocked acheivements and purchased rewards!
 
@@ -37,7 +36,4 @@
             </div>
         </div>
     </div>
-</div>
-<div id="loggedOut" ng-show="!account.isLoggedIn()">
-<p class="lead">Please <a href="/login">log in</a> to view your claimed achievements and rewards!</p>
 </div>

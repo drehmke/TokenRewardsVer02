@@ -19,22 +19,26 @@ namespace TokenRewardsVer02.Controllers {
             private $resource: angular.resource.IResourceService,
             private accountService: TokenRewardsVer02.Services.AccountService
         ) {
-            this.UserAchievementResource = $resource(`/api/userAchievements/`, null, {
-                getList: {
-                    method: 'GET',
-                    url: `/api/userAchievements/GetAchievements/`,
-                    isArray: true
-                }
-            });
-            this.UserRewardResource = $resource(`/api/userRewards/`, null, {
-                getRewards: {
-                    method: 'GET',
-                    url: `/api/userRewards/GetRewards/`,
-                    isArray: true
-                }   
-            });
-            this.achievementList = this.getAList();
-            this.rewardList = this.getRList();
+            let check = this.accountService.getUserName();
+            if (check != null)
+            {
+                this.UserAchievementResource = $resource(`/api/userAchievements/`, null, {
+                    getList: {
+                        method: 'GET',
+                        url: `/api/userAchievements/GetAchievements/`,
+                        isArray: true
+                    }
+                });
+                this.UserRewardResource = $resource(`/api/userRewards/`, null, {
+                    getRewards: {
+                        method: 'GET',
+                        url: `/api/userRewards/GetRewards/`,
+                        isArray: true
+                    }
+                });
+                this.achievementList = this.getAList();
+                this.rewardList = this.getRList();
+            }
         }
     }
     
