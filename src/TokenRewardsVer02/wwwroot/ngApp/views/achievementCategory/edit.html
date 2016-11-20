@@ -1,0 +1,34 @@
+﻿<div>
+    <ul class="breadcrumb" ng-show="account.isLoggedIn()">
+        <li><a href="/achivementCategories">Achievement Categories</a></li>
+        <li><a href="/achievementCategories/admin/add">Add An Achievement Category</a></li>
+        <li class="active">Edit An Achievement Category</li>
+    </ul>
+</div>
+<h2>Edit An Achievement</h2>
+<ul>
+    <li ng-repeat="error in c.validationErrors">{{error}}</li>
+</ul>
+<form class="form-horizontal" ng-submit="c.save()">
+    <fieldset>
+        <legend>Update Achievment Category</legend>
+        <div class="form-group">
+            <label for="name" class="col-lg-2 control-label">Category Name</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="name" placeholder="Category Name" autocomplete="off" ng-model="c.category.name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="filterCategory" class="col-lg-2 control-label">Filter Category Name</label>
+            <div class="col-lg-10">
+                <input type="text" class="form-control" id="filterCategory" placeholder="Filter Value" autocomplete="off" ng-model="c.category.filterCategory">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+                <button type="reset" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

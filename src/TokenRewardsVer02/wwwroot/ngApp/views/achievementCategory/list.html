@@ -1,0 +1,23 @@
+﻿<div>
+    <ul class="breadcrumb" ng-show="account.isLoggedIn()">
+        <li class="active">Achievement Categories</li>
+        <li><a href="/achievementCategories/admin/add">Add An Achievement Category</a></li>
+    </ul>
+</div>
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Filter Value</th>
+            <th colspan="2">Actions <a href="/achievementCategories/admin/add" class="btn btn-success pull-right">Add</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="category in c.categories">
+            <td>{{category.name}}</td>
+            <td>{{category.filterCategory}}</td>
+            <td class="text-center"><a ng-href="/achievementCategories/admin/edit/{{category.id}}" class="btn btn-primary">Edit</a></td>
+            <td class="text-center"><a ng-href="/achievementCategories/admin/delete/{{category.id}}" class="btn btn-danger">Delete</a></td>
+        </tr>
+    </tbody>
+</table>

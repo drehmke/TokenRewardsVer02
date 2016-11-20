@@ -8,9 +8,10 @@ using TokenRewardsVer02.Data;
 namespace TokenRewardsVer02.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161118185834_addingCatFilterToAchievements")]
+    partial class addingCatFilterToAchievements
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -129,6 +130,8 @@ namespace TokenRewardsVer02.Data.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int?>("AchievementCategoryId");
+
+                    b.Property<string>("CatFilter");
 
                     b.Property<string>("Description");
 

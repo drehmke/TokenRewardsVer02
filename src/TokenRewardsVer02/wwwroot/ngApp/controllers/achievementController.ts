@@ -3,9 +3,15 @@
     export class AchievementsHomeController {
         private AchievementResource;
         public achievements;
+        private ACResource;
+        public categories;
 
         public getAchievements() {
             this.achievements = this.AchievementResource.query();
+        }
+
+        public getCategories() {
+            this.categories = this.ACResource.query();
         }
 
         constructor(
@@ -13,6 +19,8 @@
         ) {
             this.AchievementResource = $resource(`/api/achievements`);
             this.getAchievements();
+            this.ACResource = $resource(`api/achievementCategories`);
+            this.getCategories();
         }
     }
 
@@ -20,7 +28,13 @@
         private AchievementResource;
         public achievement;
 
-        public save() {
+        private ACResource;
+        public categories;
+        public getCategories() {
+            this.categories = this.ACResource.query();
+        }
+
+        public saveNew() {
             this.AchievementResource.save(this.achievement).$promise
                 .then(() => {
                     this.achievement = null;
@@ -33,6 +47,8 @@
             private $state: ng.ui.IStateService
         ) {
             this.AchievementResource = $resource(`/api/achievements`);
+            this.ACResource = $resource(`api/achievementCategories`);
+            this.getCategories();
         }
         
     }
@@ -40,6 +56,12 @@
     export class AchievementsEditController {
         private AchievementResource;
         public achievement;
+
+        private ACResource;
+        public categories;
+        public getCategories() {
+            this.categories = this.ACResource.query();
+        }
 
         public getAchievementById(id: number) {
             this.achievement = this.AchievementResource.get({ id: id });
@@ -60,6 +82,8 @@
         ) {
             this.AchievementResource = $resource(`/api/achievements/:id`);
             this.getAchievementById($stateParams[`id`]);
+            this.ACResource = $resource(`api/achievementCategories`);
+            this.getCategories();
         }
 
     }

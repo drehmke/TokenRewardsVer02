@@ -8,9 +8,10 @@ using TokenRewardsVer02.Data;
 namespace TokenRewardsVer02.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161117035119_AddingCategoriesToAchievements")]
+    partial class AddingCategoriesToAchievements
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -130,6 +131,8 @@ namespace TokenRewardsVer02.Data.Migrations
 
                     b.Property<int?>("AchievementCategoryId");
 
+                    b.Property<string>("Category");
+
                     b.Property<string>("Description");
 
                     b.Property<string>("LinkTitle");
@@ -153,8 +156,6 @@ namespace TokenRewardsVer02.Data.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FilterCategory");
 
                     b.Property<string>("Name");
 
@@ -319,7 +320,7 @@ namespace TokenRewardsVer02.Data.Migrations
 
             modelBuilder.Entity("TokenRewardsVer02.Models.Achievement", b =>
                 {
-                    b.HasOne("TokenRewardsVer02.Models.AchievementCategory", "AchievementCategory")
+                    b.HasOne("TokenRewardsVer02.Models.AchievementCategory")
                         .WithMany("Achievments")
                         .HasForeignKey("AchievementCategoryId");
                 });

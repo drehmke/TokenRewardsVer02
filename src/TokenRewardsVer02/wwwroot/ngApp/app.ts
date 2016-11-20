@@ -107,6 +107,31 @@ namespace TokenRewardsVer02 {
                 controller: TokenRewardsVer02.Controllers.UserClaimRewardController,
                 controllerAs: `c`
             })
+            // ---- achievement category states -------------------------------
+            .state(`achievementCategories`, {
+                url: `/achievementCategories`,
+                templateUrl: `/ngApp/views/achievementCategory/list.html`,
+                controller: TokenRewardsVer02.Controllers.AchievementCategoryController,
+                controllerAs: `c`
+            })
+            .state(`achievementCategoriesAdd`, {
+                url: `/achievementCategories/admin/add`,
+                templateUrl: `/ngApp/views/achievementCategory/add.html`,
+                controller: TokenRewardsVer02.Controllers.AchievementCategoryAddController,
+                controllerAs: `c`
+            })
+            .state(`achievementCategoriesEdit`, {
+                url: `/achievementCategories/admin/edit/:id`,
+                templateUrl: `/ngApp/views/achievementCategory/edit.html`,
+                controller: TokenRewardsVer02.Controllers.AchievementCategoriesEditController,
+                controllerAs: `c`
+            })
+            .state(`achievementCategoriesDelete`, {
+                url: `/achievementCategories/admin/delete/:id`,
+                templateUrl: `/ngApp/views/achievementCategory/delete.html`,
+                controller: TokenRewardsVer02.Controllers.AchievementCategoriesDeleteController,
+                controllerAs: `c`
+            })
             // ----------------------------------------------------------------
             .state('notFound', {
                 url: '/notFound',

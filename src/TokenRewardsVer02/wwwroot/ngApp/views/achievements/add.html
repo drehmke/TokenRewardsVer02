@@ -1,5 +1,5 @@
 ﻿<div>
-    <ul class="breadcrumb">
+    <ul class="breadcrumb" ng-show="account.isLoggedIn()">
         <li><a href="/achievements">Achievements</a></li>
         <li class="active">Add An Achievement</li>
     </ul>
@@ -8,7 +8,7 @@
 <ul>
     <li ng-repeat="error in c.validationErrors">{{error}}</li>
 </ul>
-<form class="form-horizontal" ng-submit="c.save()">
+<form class="form-horizontal" ng-submit="c.saveNew()">
     <fieldset>
         <legend>New Achievment Information</legend>
         <div class="form-group">
@@ -26,10 +26,13 @@
         <div class="form-group">
             <label for="category" class="col-lg-2 control-label">Category</label>
             <div class="col-lg-10">
-                <select class="form-control" id="category" ng-model="c.achievement.category">
+                <select class="form-control" id="category" ng-model="c.achievement.categoryId">
+                    <option ng-repeat="cat in c.categories" value="{{cat.id}}">{{cat.name}}</option>
+                    <!--
                     <option value="catGeneral">General</option>
                     <option value="catFaction">Faction</option>
                     <option value="catPlayer">Player</option>
+                    -->
                 </select>
             </div>
         </div>

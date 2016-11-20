@@ -27,10 +27,12 @@
         <div class="form-group">
             <label for="category" class="col-lg-2 control-label">Category</label>
             <div class="col-lg-10">
-                <select class="form-control" id="category" ng-model="c.achievement.category">
-                    <option value="catGeneral">General</option>
-                    <option value="catFaction">Faction</option>
-                    <option value="catPlayer">Player</option>
+                <select class="form-control" id="category" ng-model="c.achievement.categoryId" >
+                    <option 
+                            ng-repeat="cat in c.categories" 
+                            value="{{cat.id}}"
+                            ng-if="cat.id == c.achievement.categoryId" selected
+                    >{{cat.name}}</option>
                 </select>
             </div>
         </div>

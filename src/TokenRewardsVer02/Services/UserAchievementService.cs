@@ -9,6 +9,7 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using TokenRewardsVer02.Interfaces;
 using TokenRewardsVer02.Models;
+using TokenRewardsVer02.ViewModels.Achievement;
 
 namespace TokenRewardsVer02.Services
 {
@@ -24,11 +25,11 @@ namespace TokenRewardsVer02.Services
             return _repo.Query<UserAchievements>().ToList();
         }
 
-        public IList<Achievement> GetAchievementsByUserName(string userName)
+        public IList<AchievementForView> GetAchievementsByUserName(string userName)
         { // get achievements by userId when we pass the userName - so we need to find the user's ID based on the userName
             var user = _repo.Query<ApplicationUser>().Where(u => u.UserName == userName).FirstOrDefault();
             IList<UserAchievements> allRecords = _repo.Query<UserAchievements>().ToList();
-            IList<Achievement> achievementsList = new List<Achievement>();
+            IList<AchievementForView> achievementsList = new List<AchievementForView>();
             foreach( UserAchievements a in allRecords)
             {
                 if( user.Id == a.UserID)

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using TokenRewardsVer02.Interfaces;
 using TokenRewardsVer02.Models;
 using Microsoft.AspNetCore.Authorization;
+using TokenRewardsVer02.ViewModels.Achievement;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,9 +19,10 @@ namespace TokenRewardsVer02.Controllers
 
         // GET: api/achievements
         [HttpGet]
-        public IEnumerable<Achievement> Get()
+        public IEnumerable<AchievementForView> Get()
         {
-            return _service.GetAllAchievements();
+            IList<AchievementForView> allAchievements = _service.GetAllAchievements();
+            return allAchievements;
         }
 
         // GET api/achievements/5
@@ -32,7 +34,7 @@ namespace TokenRewardsVer02.Controllers
 
         // POST api/achievements
         [HttpPost]
-        public IActionResult Post([FromBody]Achievement achievement)
+        public IActionResult Post([FromBody]AchievementForView achievement)
         {
             _service.SaveAchievement(achievement);
             return Ok(achievement);

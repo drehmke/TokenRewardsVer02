@@ -22,9 +22,10 @@ namespace TokenRewardsVer02.Controllers
 
 
         // GET api/userachievements/5
-        [HttpGet("GetAchievements/{userName}")]
-        public IActionResult GetAchievements(string userName)
+        [HttpGet("GetAchievements/")]
+        public IActionResult GetAchievements()
         {
+            string userName = this.User.Identity.Name;
             var list = _service.GetAchievementsByUserName(userName);
             return Ok(list);
         }
@@ -34,8 +35,8 @@ namespace TokenRewardsVer02.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]UserAchievements userAchievement)
         {
-
-            _service.ClaimAchievement(userAchievement.UserID, userAchievement.AchievementId);
+            string userName = this.User.Identity.Name;
+            _service.ClaimAchievement(userName, userAchievement.AchievementId);
             return Ok();
         }
 

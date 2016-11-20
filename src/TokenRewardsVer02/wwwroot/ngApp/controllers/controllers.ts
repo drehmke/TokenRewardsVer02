@@ -8,7 +8,7 @@ namespace TokenRewardsVer02.Controllers {
 
         public getAList() {
             let userName = this.accountService.getUserName();
-            return this.UserAchievementResource.getList({ userName: userName });
+            return this.UserAchievementResource.getList();
         }
         public getRList() {
             let userName = this.accountService.getUserName();
@@ -22,7 +22,7 @@ namespace TokenRewardsVer02.Controllers {
             this.UserAchievementResource = $resource(`/api/userAchievements/`, null, {
                 getList: {
                     method: 'GET',
-                    url: `/api/userAchievements/GetAchievements/:userName`,
+                    url: `/api/userAchievements/GetAchievements/`,
                     isArray: true
                 }
             });
@@ -31,7 +31,7 @@ namespace TokenRewardsVer02.Controllers {
                     method: 'GET',
                     url: `/api/userRewards/GetRewards/:userName`,
                     isArray: true
-                }
+                }   
             });
             this.achievementList = this.getAList();
             this.rewardList = this.getRList();

@@ -6,8 +6,8 @@
         
         // save it
         public claim() {
-            let userName = this.accountService.getUserName();
-            this.UserAchievementResource.save({ userId: userName, achievementId: this.achievementId }).$promise
+            //let userName = this.accountService.getUserName();
+            this.UserAchievementResource.save({ achievementId: this.achievementId }).$promise
                 .then(() => {
                     this.$state.go(`home`)
                 });

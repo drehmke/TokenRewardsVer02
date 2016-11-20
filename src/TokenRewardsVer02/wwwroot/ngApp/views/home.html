@@ -11,7 +11,7 @@
                 <div class="panel-body">
                     <ul class="list-group">
                         <li class="list-group-item grad" ng-repeat="achievement in c.achievementList">
-                            <a ng-href="/achievements#{{achievement.id}}">{{achievement.title}}</a>
+                            <img src="/images/token.png" class=""/><a ng-href="/achievements#{{achievement.id}}">{{achievement.title}}</a>
                         </li>
                     </ul>
                 </div>
@@ -39,5 +39,5 @@
     </div>
 </div>
 <div id="loggedIn" ng-show="!account.isLoggedIn()">
-<p class="lead">Please <a href="/login">log in</a> to view your claimed achievements and rewarsd!</p>
+<p class="lead">Please <a href="/login">log in</a> to view your claimed achievements and rewards!</p>
 </div>

@@ -15,7 +15,10 @@
                 <div class="navbar-left">
                     <a href="/">Home</a> |
                     <a href="/achievements">Achievements</a> |
-                    <a href="/rewards">Rewards</a>
+                    <a href="/rewards">Rewards</a> 
+                    <span ng-show="account.isLoggedIn()">
+                        | <a href="/achievementCategories" ng-show="account.isLoggedIn()">Achievement Categories</a>
+                    </span>
                 </div>
 
 
@@ -47,6 +50,7 @@
     <script src="~/ngApp/controllers/rewardsController.js"></script>
     <script src="~/ngApp/controllers/userAchievementsController.js"></script>
     <script src="~/ngApp/controllers/userRewardsController.js"></script>
+    <script src="~/ngApp/controllers/achievementCategoriesController.js"></script>
     <script src="/ngapp/services/services.js"></script>
 
 
