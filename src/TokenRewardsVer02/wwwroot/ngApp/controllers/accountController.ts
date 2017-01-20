@@ -44,7 +44,7 @@ namespace TokenRewardsVer02.Controllers {
 
         public login() {
             this.accountService.login(this.loginUser).then(() => {
-                this.$location.path('/');
+                this.$location.path('/profile');
             }).catch((results) => {
                 this.validationMessages = results;
             });

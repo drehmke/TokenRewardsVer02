@@ -1,9 +1,16 @@
 body {
-    background-image: url('../images/background.png');
+    background-image: url('../images/background.jpg');
     background-attachment: fixed;
     background-position: top center;
     background-repeat: no-repeat;
+    background-size: cover;
 }
+
+.container {
+    background-color: white;
+    height: 100%;
+}
+
 .logo{ 
     background-image: url('../images/MystsofEyr_Logo_wide.png'); 
     height: 200px; background-color: #051F14; 
@@ -15,13 +22,25 @@ body {
 .navbar-right { margin-right: 20px; }
 .navbar-left { margin-left: 20px; }
 .navbar-left a, .navbar-right a {color: #ddd; }
-.container { background-color: white; }
+
 .panel { width: 25%; float: left; }
 .homePanel {width: 100%; }
 .adminglyphies { font-size: 1.25em; margin-left: 10px; }
 .achievelistToken { width: 25px; height: 25px; margin: 0 10px 0 0; }
 .unlocked { font-style: italic; margin: 10px 0; border-top: 1px dashed #ddd; padding-top: 10px; }
 .achievementValue { margin-left: 20px; font-size: .98em; }
+.profilePanel {
+    width: 100%;
+    border: none;
+    background-color: #fff;
+    
+}
+.profilePanel .heading {
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+}
+
+
 
 .panelCollection { list-style: none; padding: 0; margin: 0; }
 .panel a { text-decoration: none; color: #000; }

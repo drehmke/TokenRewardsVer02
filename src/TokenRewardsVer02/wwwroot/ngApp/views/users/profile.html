@@ -4,7 +4,7 @@
 
     </div>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="panel homePanel">
                 <div class="panel-heading"><h4>Claimed Achievements</h4></div>
                 <div class="panel-body">
@@ -20,7 +20,7 @@
             </div>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <div class="panel homePanel">
                 <div class="panel-heading"><h4>Purchased Rewards</h4></div>
                 <div class="panel-body">
@@ -35,5 +35,35 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-4">
+            <script>
+            </script>
+            <div class="list-group" id="characterList" role="tablist" aria-multiselectable="true">
+                <div class="heading" id="characterListHeading">
+                    <h4>
+                        My Characters
+                        <button class="btn btn-link" ng-click="" ><i class="fa fa-plus-circle text-success" aria-hidden="true"></i></button>
+                    </h4>
+                </div>
+                <div>
+                    <ul class="list-group">
+                        <li class="list-group-item" ng-repeat="character in c.characterList">{{character.name}} <span ng-if="character.active == false">(inactive)</span></li>
+                    </ul>
+                </div>
+                <div id="addCharacter" ng-hide="c.characterList.length >= 3">
+                    <form ng-submit="c.addCharacter()">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Add Character Name Here" aria-describedby="addCharacterSubmit" ng-model="c.character" />
+                            <span class="input-group-btn">
+                                <input type="submit" class="btn btn-default" value="Add" />
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
+

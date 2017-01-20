@@ -5,6 +5,7 @@ namespace TokenRewardsVer02.Controllers {
         private UserRewardResource;
         public achievementList;
         public rewardList;
+        public characterList;
 
         public getAList() {
             //let userName = this.accountService.getUserName();
@@ -14,10 +15,14 @@ namespace TokenRewardsVer02.Controllers {
             //let userName = this.accountService.getUserName();
             return this.UserRewardResource.getRewards();
         }
+        public getCList() {
+            return this.characterService.getMyCharacters();
+        }
         
         constructor(
             private $resource: angular.resource.IResourceService,
-            private accountService: TokenRewardsVer02.Services.AccountService
+            private accountService: TokenRewardsVer02.Services.AccountService,
+            private characterService: TokenRewardsVer02.Services.CharacterService
         ) {
             let check = this.accountService.getUserName();
             if (check != null)
@@ -38,6 +43,7 @@ namespace TokenRewardsVer02.Controllers {
                 });
                 this.achievementList = this.getAList();
                 this.rewardList = this.getRList();
+                this.characterList = this.getCList();
             }
         }
     }

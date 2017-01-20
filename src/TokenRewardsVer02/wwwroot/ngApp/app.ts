@@ -37,6 +37,12 @@ namespace TokenRewardsVer02 {
                 controller: TokenRewardsVer02.Controllers.ExternalRegisterController,
                 controllerAs: 'c'
             })
+            .state(`/profile`, {
+                url: `/profile`,
+                templateUrl: '/ngApp/views/users/profile.html',
+                controller: TokenRewardsVer02.Controllers.ProfileController,
+                controllerAs: `c`
+            })
             // ---- Achievement States ----------------------------------------
             .state(`achievements`, {
                 url: `/achievements`,
