@@ -245,3 +245,4 @@ paket-files/
 *.sln.iml
 
 *.orig
+src/TokenRewardsVer02/Data/Migrations/
