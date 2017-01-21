@@ -3,25 +3,29 @@
         constructor(private id: number, private name: string, private user, private wufooFormId: number, private active: boolean) {
         }
     }
+    class ToDelete {
+        constructor(private id: number) {
+
+        }
+    }
 
 
     export class CharacterService {
+        private playerGetAllMyCharactersResource;
 
         public getMyCharacters() {
-            //let returnData = null;
-            this.$http.get(`/api/character/GetAllMyCharacters/`)
-                .then((result) => {
-                    return result.data;
-                })
-                .catch((result) => {
-                    var messages = this.flattenValidation(result.data);
-                    console.error(messages);
-                });
-            //return returnData;
+            let temp = this.playerGetAllMyCharactersResource.getAllMyCharacters();
+            return temp;
         }
 
         public saveMyCharacter(character) {
-            let characterToSave: Character = new Character(0, character, '', 0, true);
+            let characterToSave: Character;
+            if (character.length <= 1) {
+                characterToSave = new Character(0, character, '', 0, true);
+            } else {
+                characterToSave = character;
+            }
+            
             return this.$q((resolve, reject) => {
                 this.$http.post(`/api/character`, characterToSave).then((result) => {
                     resolve();
@@ -32,7 +36,11 @@
             });
         }
 
-
+        public deleteMyCharacter(idToDelete) {
+            let characterToDelete: ToDelete = new ToDelete(idToDelete);
+            this.$resource(`/api/character/:id`).delete(characterToDelete);
+        }
+        
         private flattenValidation(modelState) {
             let messages = [];
             for (let prop in modelState) {
@@ -46,7 +54,13 @@
             private $http: ng.IHttpService,
             private $resource: ng.resource.IResourceService
         ) {
-
+            this.playerGetAllMyCharactersResource = $resource(`/api/character/`, null, {
+                getAllMyCharacters: {
+                    method: `GET`,
+                    url: `/api/character/GetAllMyCharacters`,
+                    isArray: true
+                }
+            });
         }
     }
 

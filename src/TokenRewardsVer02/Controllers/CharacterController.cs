@@ -49,8 +49,8 @@ namespace TokenRewardsVer02.Controllers
             return Ok(characterToSave);
         }
 
-        [HttpDelete("SoftDelete/{{id}}")]
-        public IActionResult SoftDelete(int id)
+        [HttpDelete("{{id}}")]
+        public IActionResult Delete(int id)
         {
             this._service.SoftDelete(id);
             return Ok();
