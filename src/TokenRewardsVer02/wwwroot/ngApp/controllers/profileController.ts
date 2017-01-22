@@ -4,7 +4,7 @@
         public achievementList;
         public rewardList;
         public characterList;
-        public charactersAllowed = 3;
+        public charactersAllowed = 3; // move this to player Model
 
         public getAList() {
 
@@ -13,6 +13,17 @@
 
         }
         /* Character Manipulation */
+        public pcTotal;
+        public pcCount() {
+            let pcCount: number;
+            for (let i = 0; i < this.characterList.length; i++) {
+                if (this.characterList[i].isNpc == false) {
+                    pcCount++;
+                }
+                console.log(pcCount);
+            }
+            return pcCount;
+        }
         public getCList() {
             let test = this.characterService.getMyCharacters();
             return test;
@@ -23,6 +34,7 @@
                 .then(() => {
                     this.character = null; // clear the field
                     this.characterList = this.getCList();
+                    //this.pcTotal = this.pcCount();
                 })
         }
         public npc;
@@ -45,11 +57,13 @@
         public toggleCharacterActive(id: number) {
             let temp = this.findCharacter(id);
             this.characterService.saveMyCharacter(temp, temp.isNpc);
-            this.getCList();
+            this.characterList = this.getCList();
+            //this.pcTotal = this.pcCount()
         }
         public deleteCharacter(id: number) {
             this.characterService.deleteMyCharacter(id);
-            this.getCList();
+            this.characterList = this.getCList();
+            //this.pcTotal = this.pcCount()
         }
 
 
@@ -66,6 +80,8 @@
             private characterService: TokenRewardsVer02.Services.CharacterService
         ) {
             this.characterList = this.getCList();
+            //this.pcTotal = this.pcCount();
+            //console.log(this.pcTotal);
         }
     }
 }

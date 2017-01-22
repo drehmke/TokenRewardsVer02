@@ -3,15 +3,15 @@
         <h4>My Characters</h4>
     </div>
     <div>
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="character in c.characterList" ng-if="character.isNpc == false">
+        <ul class="list-group animate-container">
+            <li class="list-group-item animate-repeat" ng-repeat="character in c.characterList | orderBy: '-isActive'" ng-if="character.isNpc == false">
                 <label class="switch characterSlide"><input type="checkbox" ng-model="character.isActive" ng-change="c.toggleCharacterActive(character.id)" /><div class="slider round"></div></label> 
                 <span class="{{character.isActive}}ActiveCharacter">{{character.name}}</span>
                 
             </li>
         </ul>
     </div>
-    <div id="addCharacter" ng-hide="c.characterList.length >= c.charactersAllowed">
+    <div id="addCharacter" class="animate-show-hide" ng-hide="c.characterList.length >= c.charactersAllowed">
         <form ng-submit="c.addCharacter()">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Add Character Name Here" aria-describedby="addCharacterSubmit" ng-model="c.character" />
@@ -26,8 +26,8 @@
         <h4>My NPCs</h4>
     </div>
     <div>
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="character in c.characterList" ng-if="character.isNpc == true">
+        <ul class="list-group animate-container">
+            <li class="list-group-item animate-repeat" ng-repeat="character in c.characterList | orderBy: '-isActive'" ng-if="character.isNpc == true">
                 <label class="switch characterSlide"><input type="checkbox" ng-model="character.isActive" ng-change="c.toggleCharacterActive(character.id)" /><div class="slider round"></div></label>
                 <span class="{{character.isActive}}ActiveCharacter">{{character.name}}</span>
 
