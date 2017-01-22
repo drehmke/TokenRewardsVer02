@@ -10,5 +10,7 @@ namespace TokenRewardsVer02.Models
     public class ApplicationUser : IdentityUser
     {
         public int TokenTotal { get; set; }
+        public int CharacterAllowance { get; set; }
+        public int CharacterTotal { get; set; }
     }
 }

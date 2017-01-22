@@ -11,7 +11,7 @@
             </li>
         </ul>
     </div>
-    <div id="addCharacter" class="animate-show-hide" ng-hide="c.characterList.length >= c.charactersAllowed">
+    <div id="addCharacter" class="animate-show-hide" ng-hide="character.characterTotal >= character.characterAllowance">
         <form ng-submit="c.addCharacter()">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Add Character Name Here" aria-describedby="addCharacterSubmit" ng-model="c.character" />

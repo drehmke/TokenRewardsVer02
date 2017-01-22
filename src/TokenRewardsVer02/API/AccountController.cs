@@ -99,7 +99,7 @@ namespace TokenRewardsVer02.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, TokenTotal = 0, CharacterAllowance = 3, CharacterTotal = 0 };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

@@ -64,6 +64,13 @@ namespace TokenRewardsVer02.Services
                     characterToSave.User = user;
                     characterToSave.isActive = true;
                     _repo.Add(characterToSave);
+
+                    // update the user's character total if the charact is not an NPC
+                    if( characterToSave.isNpc == false )
+                    {
+                        user.CharacterTotal = user.CharacterTotal + 1;
+                        _repo.Update(user);
+                    }
                 }
                 else
                 {
@@ -113,15 +120,31 @@ namespace TokenRewardsVer02.Services
         // All Users
         public void SoftDelete(int id)
         {
-            Character characterToDelete = _repo.Query<Character>().Where(c => c.Id == id).FirstOrDefault();
+            Character characterToDelete = _repo.Query<Character>().Where(c => c.Id == id).Include( c => c.User ).FirstOrDefault();
             characterToDelete.isActive = false;
             _repo.Update(characterToDelete);
+
+            // update the player's character total
+            if( characterToDelete.isNpc == false )
+            {
+                ApplicationUser user = _repo.Query<ApplicationUser>().Where(u => u.Id == characterToDelete.User.Id).FirstOrDefault();
+                user.CharacterTotal = user.CharacterTotal - 1;
+                _repo.Update(user);
+            }
         }
 
         public void Delete(int id)
         {
-            Character characterToDelete = _repo.Query<Character>().Where(c => c.Id == id).FirstOrDefault();
+            Character characterToDelete = _repo.Query<Character>().Where(c => c.Id == id).Include( c => c.User ).FirstOrDefault();
             _repo.Delete(characterToDelete);
+
+            // update the player's character total
+            if( characterToDelete.isNpc == false )
+            {
+                ApplicationUser user = _repo.Query<ApplicationUser>().Where(u => u.Id == characterToDelete.User.Id).FirstOrDefault();
+                user.CharacterTotal = user.CharacterTotal - 1;
+                _repo.Update(user);
+            }
         }
 
         public CharacterService(IGenericRepository repo, UserManager<ApplicationUser> _manager)

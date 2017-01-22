@@ -4,7 +4,6 @@
         public achievementList;
         public rewardList;
         public characterList;
-        public charactersAllowed = 3; // move this to player Model
 
         public getAList() {
 
@@ -13,17 +12,6 @@
 
         }
         /* Character Manipulation */
-        public pcTotal;
-        public pcCount() {
-            let pcCount: number;
-            for (let i = 0; i < this.characterList.length; i++) {
-                if (this.characterList[i].isNpc == false) {
-                    pcCount++;
-                }
-                console.log(pcCount);
-            }
-            return pcCount;
-        }
         public getCList() {
             let test = this.characterService.getMyCharacters();
             return test;
