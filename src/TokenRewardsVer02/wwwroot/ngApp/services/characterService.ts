@@ -1,6 +1,6 @@
 ﻿namespace TokenRewardsVer02.Services {
     class Character {
-        constructor(private id: number, private name: string, private user, private wufooFormId: number, private active: boolean) {
+        constructor(private name: string, private isActive: boolean, private isNpc: boolean) {
         }
     }
     class ToDelete {
@@ -18,14 +18,15 @@
             return temp;
         }
 
-        public saveMyCharacter(character) {
+        public saveMyCharacter(character, isNpc) {
             let characterToSave: Character;
-            if (character.length <= 1) {
-                characterToSave = new Character(0, character, '', 0, true);
-            } else {
-                characterToSave = character;
-            }
             
+            if (typeof character == "object") {
+                characterToSave = character;
+            } else if(typeof character == "string") {
+                characterToSave = new Character(character, true, isNpc);
+            }
+            console.log(characterToSave);
             return this.$q((resolve, reject) => {
                 this.$http.post(`/api/character`, characterToSave).then((result) => {
                     resolve();

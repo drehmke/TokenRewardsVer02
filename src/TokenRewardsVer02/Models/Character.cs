@@ -11,6 +11,8 @@ namespace TokenRewardsVer02.Models
         public ApplicationUser User { get; set; }
         public string Name { get; set; }
         public int WufooFormId { get; set; }
-        public bool Active { get; set; }
+        public bool isActive { get; set; }
+        public DateTime DateSubmitted { get; set; }
+        public bool isNpc { get; set; }
     }
 }

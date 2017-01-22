@@ -4,7 +4,6 @@
         public achievementList;
         public rewardList;
         public characterList;
-        public character;
         public charactersAllowed = 3;
 
         public getAList() {
@@ -18,10 +17,19 @@
             let test = this.characterService.getMyCharacters();
             return test;
         }
+        public character;
         public addCharacter() {
-            this.characterService.saveMyCharacter(this.character)
+            this.characterService.saveMyCharacter(this.character, false)
                 .then(() => {
                     this.character = null; // clear the field
+                    this.characterList = this.getCList();
+                })
+        }
+        public npc;
+        public addNPC() {
+            this.characterService.saveMyCharacter(this.npc, true)
+                .then(() => {
+                    this.npc = null; // clear the field
                     this.characterList = this.getCList();
                 })
         }
@@ -36,7 +44,7 @@
         }
         public toggleCharacterActive(id: number) {
             let temp = this.findCharacter(id);
-            this.characterService.saveMyCharacter(temp);
+            this.characterService.saveMyCharacter(temp, temp.isNpc);
             this.getCList();
         }
         public deleteCharacter(id: number) {

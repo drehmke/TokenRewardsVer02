@@ -21,7 +21,8 @@ namespace TokenRewardsVer02.Services
             UserProfileView converted = new UserProfileView();
             converted.Id = characterToConvert.Id;
             converted.Name = characterToConvert.Name;
-            converted.Active = characterToConvert.Active;
+            converted.isActive = characterToConvert.isActive;
+            converted.isNpc = characterToConvert.isNpc;
 
             return converted;
         }
@@ -61,7 +62,7 @@ namespace TokenRewardsVer02.Services
                 {
                     ApplicationUser user = _repo.Query<ApplicationUser>().Where(u => u.Id == uid).FirstOrDefault();
                     characterToSave.User = user;
-                    characterToSave.Active = true;
+                    characterToSave.isActive = true;
                     _repo.Add(characterToSave);
                 }
                 else
@@ -79,7 +80,9 @@ namespace TokenRewardsVer02.Services
             converted.Name = characterToConvert.Name;
             converted.UserName = characterToConvert.User.UserName;
             converted.WufooFormId = characterToConvert.WufooFormId;
-            converted.Active = characterToConvert.Active;
+            converted.isActive = characterToConvert.isActive;
+            converted.DateSubmitted = characterToConvert.DateSubmitted;
+            converted.isNpc = characterToConvert.isNpc;
 
             return converted;
         }
@@ -111,7 +114,7 @@ namespace TokenRewardsVer02.Services
         public void SoftDelete(int id)
         {
             Character characterToDelete = _repo.Query<Character>().Where(c => c.Id == id).FirstOrDefault();
-            characterToDelete.Active = false;
+            characterToDelete.isActive = false;
             _repo.Update(characterToDelete);
         }
 

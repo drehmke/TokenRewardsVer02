@@ -9,6 +9,7 @@ namespace TokenRewardsVer02.ViewModels.Character
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public bool Active { get; set; }
+        public bool isActive { get; set; }
+        public bool isNpc { get; set; }
     }
 }

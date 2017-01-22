@@ -1,4 +1,5 @@
 @import url(toggle-switch.css);
+@import url(bootstrap-overrides.css);
 
 body {
     background-image: url('../images/background.jpg');
@@ -20,12 +21,6 @@ body {
     background-position: top center;
 }
 
-.navbar-left, .navbar-right { color: white; }
-.navbar-right { margin-right: 20px; }
-.navbar-left { margin-left: 20px; }
-.navbar-left a, .navbar-right a {color: #ddd; }
-
-.panel { width: 25%; float: left; }
 .homePanel {width: 100%; }
 .adminglyphies { font-size: 1.25em; margin-left: 10px; }
 .achievelistToken { width: 25px; height: 25px; margin: 0 10px 0 0; }
@@ -35,18 +30,18 @@ body {
     width: 100%;
     border: none;
     background-color: #fff;
-    
 }
 .profilePanel .heading {
     width: 100%;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px dashed #5e7a42;
+    margin-bottom: 10px;
 }
 .falseActiveCharacter { color: #808080; text-decoration: line-through; }
 .trueActiveCharacter { color: #000; text-decoration: none; }
 
 
 .panelCollection { list-style: none; padding: 0; margin: 0; }
-.panel a { text-decoration: none; color: #000; }
+
 .rewardlistToken { width: 30px; height: 30px; }
 .rewardHeader { background-color: #29796a; color: white; }
 .rewardHeader2 { background-color: #379f8c; color: white; }
@@ -68,13 +63,6 @@ body {
     border: 1px dotted #c8d8b8;
 }
 
-textarea:focus, textarea.form-control:focus, input.form-control:focus, input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, [type=text].form-control:focus, [type=password].form-control:focus, [type=email].form-control:focus, [type=tel].form-control:focus, [contenteditable].form-control:focus {
-    box-shadow: inset 0 -2px 0 #5e7a42;
-}
-select:focus, select.form-control:focus {
-    box-shadow: inset 0 -2px 0 #5e7a42;
-}
-.form-control:focus{ border-color: #5e7a42; }
 
 
 
