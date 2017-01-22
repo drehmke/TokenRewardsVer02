@@ -29,8 +29,7 @@
             let temp = null;
             for (let i = 0; i < this.characterList.length; i++) {
                 if (this.characterList[i].id == id) {
-                    let temp = this.characterList[i];
-                    
+                    temp = this.characterList[i];
                 }
             }
             return temp;

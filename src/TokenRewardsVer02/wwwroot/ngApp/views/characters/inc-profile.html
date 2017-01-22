@@ -5,11 +5,7 @@
     <div>
         <ul class="list-group">
             <li class="list-group-item" ng-repeat="character in c.characterList">
-                <div class="pull-right">
-                    <input type="checkbox" ng-model="character.active" ng-change="c.toggleCharacterActive(character.id)" /> 
-                    <a href="#" ng-click="c.deleteCharacter(character.id)"><i class="fa fa-trash-o text-danger" aria-hidden="true"></i></a>
-                </div>
-                
+                <label class="switch characterSlide"><input type="checkbox" ng-model="character.active" ng-change="c.toggleCharacterActive(character.id)" /><div class="slider round"></div></label> 
                 <span class="{{character.active}}ActiveCharacter">{{character.name}}</span>
                 
             </li>

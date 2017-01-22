@@ -33,7 +33,7 @@ namespace TokenRewardsVer02.Controllers
             return listForView;
         }
 
-        [HttpGet("GetMySingleCharacter/{{id}}")]
+        [HttpGet("GetMySingleCharacter/{id}")]
         public UserProfileView GetMySingleCharacter(int id)
         {
             string uid = this.getUserId();
@@ -49,8 +49,8 @@ namespace TokenRewardsVer02.Controllers
             return Ok(characterToSave);
         }
 
-        [HttpDelete("{{id}}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("SoftDelete/{id}")]
+        public IActionResult SoftDelete(int id)
         {
             this._service.SoftDelete(id);
             return Ok();
@@ -64,7 +64,7 @@ namespace TokenRewardsVer02.Controllers
             return listForView;
         }
 
-        [HttpGet("AdminGetSingleCharacter/{{id}}")]
+        [HttpGet("AdminGetSingleCharacter/{id}")]
         public AdminView AdminGetSingleCharacter(int id)
         {
             AdminView forView = this._service.GetSingleCharacter(id);
@@ -78,14 +78,14 @@ namespace TokenRewardsVer02.Controllers
             return Ok(characterToSave);
         }
 
-        [HttpDelete("AdminSoftDelete/{{id}}")]
+        [HttpDelete("AdminSoftDelete/{id}")]
         public IActionResult AdminSoftDelete(int id)
         {
             this._service.SoftDelete(id);
             return Ok();
         }
 
-        [HttpDelete("AdminHardDelete/{{id}}")]
+        [HttpDelete("AdminHardDelete/{id}")]
         public IActionResult AdminHardDelete(int id)
         {
             this._service.Delete(id);

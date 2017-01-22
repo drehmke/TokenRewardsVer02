@@ -38,7 +38,15 @@
 
         public deleteMyCharacter(idToDelete) {
             let characterToDelete: ToDelete = new ToDelete(idToDelete);
-            this.$resource(`/api/character/:id`).delete(characterToDelete);
+            //this.$resource(`/api/character/SoftDelete/:id`).delete(characterToDelete);
+            return this.$q((resolve, reject) => {
+                this.$http.delete(`/api/character/SoftDelete/:id`, characterToDelete).then((result) => {
+                    resolve();
+                }).catch((result) => {
+                    var messages = this.flattenValidation(result.data);
+                    reject(messages);
+                })
+            })
         }
         
         private flattenValidation(modelState) {
