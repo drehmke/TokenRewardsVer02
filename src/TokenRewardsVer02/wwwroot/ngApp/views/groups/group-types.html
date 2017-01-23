@@ -1,0 +1,54 @@
+﻿<div class="admin">
+    <div ng-include="'/ngApp/views/admin/admin-nav.html'"></div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th><h3>Group Types</h3></th>
+                <td colspan="2" align="right">
+                    <form ng-submit="c.addType()">
+                        <div class="input-group groupTypeAddForm">
+                            <span class="input-group-addon">
+                                <input type="checkbox" ng-model="c.newType.isAdmin" />
+                            </span>
+                            <input type="text" class="form-control" placeholder="New Group Type Here (check if admin only)" ng-model="c.newType.name" />
+                            <span class="input-group-btn">
+                                <input type="submit" class="btn btn-default" value="Add Type" />
+                            </span>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <th>Group Type</th>
+                <th></th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="type in c.groupTypes | orderBy: 'name' | orderBy: 'isAdmin'">
+                <td class="col-lg-3" >
+                    <div role="tabpanel" class="" id="typeDisplay{{type.id}}" aria-labelledby="typeParent{{type.id}}">
+                        <i class="fa fa-lock text-warning" aria-hidden="true" ng-if="type.isAdmin"></i> {{type.name}}
+                    </div>
+                </td>
+                <td class="col-lg-7">
+                    <div role="tabpanel" class="collapse" id="typeEdit{{type.id}}" aria-labelledby="typeParent{{type.id}}">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" ng-model="type.isAdmin" />
+                            </span>
+                            <input type="text" class="form-control" ng-model="type.name" />
+                            <span class="input-group-btn">
+                                <input type="submit" class="btn btn-default" value="Update" ng-click="c.updateType(type.id)" />
+                            </span>
+                        </div>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <a data-toggle="collapse" href="#typeEdit{{type.id}}" aria-expanded="false" aria-controls="type{{type.id}}"><i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i></a> | 
+                    <a href="#" ng-click="c.deleteType(type.id)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

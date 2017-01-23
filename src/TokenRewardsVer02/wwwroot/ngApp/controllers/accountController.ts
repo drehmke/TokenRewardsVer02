@@ -60,7 +60,7 @@ namespace TokenRewardsVer02.Controllers {
 
         public register() {
             this.accountService.register(this.registerUser).then(() => {
-                this.$location.path('/');
+                this.$location.path('/profile');
             }).catch((results) => {
                 this.validationMessages = results;
             });
@@ -80,7 +80,7 @@ namespace TokenRewardsVer02.Controllers {
         public register() {
             this.accountService.registerExternal(this.registerUser.email)
                 .then((result) => {
-                    this.$location.path('/');
+                    this.$location.path('/profile');
                 }).catch((result) => {
                     this.validationMessages = result;
                 });

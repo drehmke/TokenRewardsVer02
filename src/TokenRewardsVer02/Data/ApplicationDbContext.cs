@@ -16,6 +16,9 @@ namespace TokenRewardsVer02.Data
         public DbSet<UserRewards> UserRewards { get; set; }
         public DbSet<AchievementCategory> AchievementCategories { get; set; }
         public DbSet<Character> Characters { get; set; }
+        public DbSet<GroupType> GroupTypes { get; set; }
+
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

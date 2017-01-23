@@ -138,6 +138,19 @@ namespace TokenRewardsVer02 {
                 controller: TokenRewardsVer02.Controllers.AchievementCategoriesDeleteController,
                 controllerAs: `c`
             })
+            // ---- admin -----------------------------------------------------
+            .state(`admin`, {
+                url: `/admin`,
+                templateUrl: `/ngApp/views/admin/dashboard.html`,
+                controller: TokenRewardsVer02.Controllers.AdminController,
+                controllerAs: `c`
+            })
+            .state(`groupTypeList`, {
+                url: `/admin/groupTypes`,
+                templateUrl: `/ngApp/views/groups/group-types.html`,
+                controller: TokenRewardsVer02.Controllers.GroupTypeController,
+                controllerAs: `c`
+            })
             // ----------------------------------------------------------------
             .state('notFound', {
                 url: '/notFound',

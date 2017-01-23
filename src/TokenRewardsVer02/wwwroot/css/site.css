@@ -103,3 +103,9 @@ body {
 .animate-show-hide.ng-hide-remove {
   transition: all linear 0.5s;
 }
+
+
+.admin .groupTypeAddForm { 
+    width: 80%;
+    padding-top: 20px;
+}
