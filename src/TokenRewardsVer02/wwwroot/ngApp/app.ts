@@ -151,6 +151,12 @@ namespace TokenRewardsVer02 {
                 controller: TokenRewardsVer02.Controllers.GroupTypeController,
                 controllerAs: `c`
             })
+            .state(`groupList`, {
+                url: `/admin/groups`,
+                templateUrl: `/ngApp/views/groups/list.html`,
+                controller: TokenRewardsVer02.Controllers.GroupListController,
+                controllerAs: `c`
+            })
             // ----------------------------------------------------------------
             .state('notFound', {
                 url: '/notFound',

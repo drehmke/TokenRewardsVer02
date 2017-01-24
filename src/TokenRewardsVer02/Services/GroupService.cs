@@ -14,7 +14,8 @@ namespace TokenRewardsVer02.Services
         // get
         public IList<Group> GetAllGroups()
         {
-            return _repo.Query<Group>().ToList();
+            IList<Group> test = _repo.Query<Group>().Include( g => g.Type ).ToList();
+            return test;
         }
         public IList<Group> GetAllByActive(bool activeFlag)
         {
@@ -29,8 +30,12 @@ namespace TokenRewardsVer02.Services
         // save
         public void SaveGroup(Group groupToSave)
         {
-            if(groupToSave.Id == 0)
+            if(groupToSave.Type == null)
             {
+                // grab the Type Id from groupToSaveId
+                GroupType groupType = _repo.Query<GroupType>().Where(t => t.Id == groupToSave.Id).FirstOrDefault();
+                groupToSave.Type = groupType;
+                groupToSave.Id = 0; // reset the id so we save a new entry
                 groupToSave.isActive = true;
                 _repo.Add(groupToSave);
             } else

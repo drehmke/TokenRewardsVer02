@@ -19,7 +19,8 @@ namespace TokenRewardsVer02.Controllers
         [HttpGet]
         public IEnumerable<Group> Get()
         {
-            return _service.GetAllGroups();
+            IList<Group> test = _service.GetAllGroups();
+            return test;
         }
 
         // all
