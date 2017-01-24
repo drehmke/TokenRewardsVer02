@@ -1,6 +1,6 @@
 ﻿<div class="admin">
     <div ng-include="'/ngApp/views/admin/admin-nav.html'"></div>
-    <table class="table table-striped table-hover table-bordered">
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <th colspan="2"><h3>Groups</h3></th>
@@ -43,9 +43,42 @@
                 </td>
                 <td></td>
                 <td class="text-right">
-                    <a data-toggle="collapse" href="#typeEdit{{group.id}}" aria-expanded="false" aria-controls="type{{group.id}}"><i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i></a> |
+                    <a href="#editModal{{group.id}}" data-toggle="modal" data-target="#editModal{{group.id}}"><i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i></a> |
                     <a href="#" ng-click="c.deleteGroup(group.id)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                    <div class="modal fade text-left" id="editModal{{group.id}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{group.id}}">
+                        <div class="modal-dialog" role="document">
+                            <form class="form" ng-submit="c.updateGroup(group.id)">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="editModalLabel{{group.id}}">Update Group Info</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label>Active:</label>
+                                            <input type="checkbox" class="form-control" ng-model="group.isActive" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Group Name:</label>
+                                            <input type="text" class="form-control" placeholder="Group Name Here" ng-model="group.name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Group Type:</label>
+                                            <select class="form-control" ng-model="group.type.id">
+                                                <option ng-repeat="type in c.typesList | orderBy: 'name' | orderBy: 'isAdmin'" value="{{type.id}}">{{type.name}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <input type="submit" value="Update Group" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </td>
+
             </tr>
         </tbody>
     </table>

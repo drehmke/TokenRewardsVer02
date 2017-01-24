@@ -25,6 +25,7 @@
             this.groupService.saveGroup(this.newGroup)
                 .then(() => {
                     this.getAllGroups();
+                    this.newGroup = null;
                 });
         }
         public deleteGroup(id: number) {
@@ -34,8 +35,26 @@
                 });
         }
 
+        public findGroupById(id: number) {
+            let returnableGroup;
+            for (let i = 0; i < this.groupsList.length; i++) {
+                if (this.groupsList[i].id == id) {
+                    returnableGroup = this.groupsList[i];
+                }
+            }
+            return returnableGroup;
+        }
+        public updateGroup( id: number ) {
+            let groupToUpdate = this.findGroupById(id);
+            this.groupService.saveGroup(groupToUpdate)
+                .then(() => {
+                    this.$state.go(`groupList`);
+                });
+        }
+
         constructor(
-            private groupService: TokenRewardsVer02.Services.GroupService
+            private groupService: TokenRewardsVer02.Services.GroupService,
+            private $state: ng.ui.IStateService
         ) {
             this.getTypes();
             this.getAllGroups();

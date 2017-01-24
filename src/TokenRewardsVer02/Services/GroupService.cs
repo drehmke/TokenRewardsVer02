@@ -39,7 +39,9 @@ namespace TokenRewardsVer02.Services
                 groupToSave.isActive = true;
                 _repo.Add(groupToSave);
             } else
-            {
+            {   // the group name isn't getting sent back, so let's repull
+                GroupType groupType = _repo.Query<GroupType>().Where(t => t.Id == groupToSave.Type.Id).FirstOrDefault();
+                groupToSave.Type = groupType;
                 _repo.Update(groupToSave);
             }
         }
