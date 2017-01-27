@@ -36,8 +36,8 @@ body {
     border-bottom: 1px dashed #5e7a42;
     margin-bottom: 10px;
 }
-.falseActiveCharacter { color: #808080; text-decoration: line-through; }
-.trueActiveCharacter { color: #000; text-decoration: none; }
+.falseActive { color: #808080; text-decoration: line-through; }
+.trueActive{ color: #000; text-decoration: none; }
 
 
 .panelCollection { list-style: none; padding: 0; margin: 0; }

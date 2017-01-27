@@ -18,7 +18,7 @@ namespace TokenRewardsVer02.Data
         public DbSet<Character> Characters { get; set; }
         public DbSet<GroupType> GroupTypes { get; set; }
         public DbSet<Group> Groups { get; set; }
-
+        public DbSet<Rank> Ranks { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

@@ -1,0 +1,75 @@
+﻿<div class="admin rankList">
+    <div ng-include="'/ngApp/views/admin/admin-nav.html'"></div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th colspan="2"><h3>Ranks</h3></th>
+                <td colspan="3" align="right">
+
+                    <form class="form-inline" ng-submit="c.addRank()">
+                        <div class="form-group">
+                            <input type="number" class="form-control col-lg-1" placeholder="Level" ng-model="c.newRank.level" />
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="New Group Rank Here" ng-model="c.newRank.name" />
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" ng-model="c.newRank.belongsTo.id">
+                                <option selected>Select A Group</option>
+                                <option ng-repeat="group in c.groupsList | orderBy: 'name' | orderBy: 'type.Name'" value="{{group.id}}">{{group.name}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Add Group Rank" class="btn btn-default" />
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <th>Rank</th>
+                <th>Group</th>
+                <th></th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tbody>
+            <tr ng-repeat="rank in c.ranksList | orderBy: 'name' | orderBy: 'level' | orderBy: 'belongsTo.name'">
+                <td class="col-lg-1 {{rank.isActive}}Active">{{rank.level}}</td>
+                <td class="col-lg-3 {{rank.isActive}}Active">
+                    <div role="tabpanel" class="" id="rankDisplay{{rank.id}}" aria-labelledby="rankParent{{rank.id}}">
+                        {{rank.name}}
+                    </div>
+                </td>
+                <td class="col-lg-3 {{rank.isActive}}Active">{{rank.belongsTo.name}}</td>
+                <td class="col-lg-4">
+                    <form class="form-inline">
+                        <div role="tabpanel" class="collapse" id="rankEdit{{rank.id}}" aria-labelledby="rankParent{{rank.id}}">
+                            <div class="input-group">
+                                <input type="checkbox" ng-model="rank.isActive" />
+                                <input type="number" class="form-control col-lg-1" placeholder="Level" ng-model="rank.level" />
+                            </div>
+                            <div class="input-group">
+                                <input type="text" class="form-control" ng-model="rank.name" />
+                            </div>
+                            <div class="input-group">
+                                <select class="form-control">
+                                    <option selected>Select A Group</option>
+                                    <option ng-repeat="group in c.groupsList | orderBy: 'name' | orderBy: 'type.Name'" value="{{group.id}}">{{group.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-default" value="Update" ng-click="c.updateRank(rank.id)" />
+                            </div>
+                    </form>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <a data-toggle="collapse" href="#rankEdit{{rank.id}}" aria-expanded="false" aria-controls="rank{{rank.id}}"><i class="fa fa-pencil-square-o text-success" aria-hidden="true"></i></a> |
+                    <a href="#" ng-click="c.deleteRank(rank.id)"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

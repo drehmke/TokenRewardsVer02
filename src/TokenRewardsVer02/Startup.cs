@@ -68,6 +68,7 @@ namespace TokenRewardsVer02
             services.AddScoped<ICharacterService, CharacterService>();
             services.AddScoped<IGroupTypeService, GroupTypeService>();
             services.AddScoped<IGroupService, GroupService>();
+            services.AddScoped<IRankService, RankService>();
 
             // add security policies
             services.AddAuthorization(options =>

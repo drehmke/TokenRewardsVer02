@@ -6,7 +6,7 @@
         <ul class="list-group animate-container">
             <li class="list-group-item animate-repeat" ng-repeat="character in c.characterList | orderBy: '-isActive'" ng-if="character.isNpc == false">
                 <label class="switch characterSlide"><input type="checkbox" ng-model="character.isActive" ng-change="c.toggleCharacterActive(character.id)" /><div class="slider round"></div></label> 
-                <span class="{{character.isActive}}ActiveCharacter">{{character.name}}</span>
+                <span class="{{character.isActive}}Active">{{character.name}}</span>
                 
             </li>
         </ul>
@@ -29,7 +29,7 @@
         <ul class="list-group animate-container">
             <li class="list-group-item animate-repeat" ng-repeat="character in c.characterList | orderBy: '-isActive'" ng-if="character.isNpc == true">
                 <label class="switch characterSlide"><input type="checkbox" ng-model="character.isActive" ng-change="c.toggleCharacterActive(character.id)" /><div class="slider round"></div></label>
-                <span class="{{character.isActive}}ActiveCharacter">{{character.name}}</span>
+                <span class="{{character.isActive}}Active">{{character.name}}</span>
 
             </li>
         </ul>

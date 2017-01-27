@@ -145,16 +145,22 @@ namespace TokenRewardsVer02 {
                 controller: TokenRewardsVer02.Controllers.AdminController,
                 controllerAs: `c`
             })
-            .state(`groupTypeList`, {
-                url: `/admin/groupTypes`,
-                templateUrl: `/ngApp/views/groups/group-types.html`,
-                controller: TokenRewardsVer02.Controllers.GroupTypeController,
-                controllerAs: `c`
-            })
             .state(`groupList`, {
                 url: `/admin/groups`,
                 templateUrl: `/ngApp/views/groups/list.html`,
                 controller: TokenRewardsVer02.Controllers.GroupListController,
+                controllerAs: `c`
+            })
+            .state(`groupTypeList`, {
+                url: `/admin/group/types`,
+                templateUrl: `/ngApp/views/groups/list-types.html`,
+                controller: TokenRewardsVer02.Controllers.GroupTypeController,
+                controllerAs: `c`
+            })
+            .state(`groupRankList`, {
+                url: `/admin/group/ranks`,
+                templateUrl: `/ngApp/views/groups/list-ranks.html`,
+                controller: TokenRewardsVer02.Controllers.RankController,
                 controllerAs: `c`
             })
             // ----------------------------------------------------------------
