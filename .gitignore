@@ -246,3 +246,5 @@ paket-files/
 
 *.orig
 src/TokenRewardsVer02/Data/Migrations/
+
+src/TokenRewardsVer02/wwwroot/_references\.js
