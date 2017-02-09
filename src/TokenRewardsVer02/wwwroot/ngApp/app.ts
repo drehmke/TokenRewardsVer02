@@ -163,6 +163,12 @@ namespace TokenRewardsVer02 {
                 controller: TokenRewardsVer02.Controllers.RankController,
                 controllerAs: `c`
             })
+            .state(`linksList`, {
+                url: `/admin/links/`,
+                templateUrl: `/ngApp/views/links/list.html`,
+                controller: TokenRewardsVer02.Controllers.LinkController,
+                controllerAs: `c`
+            })
             // ----------------------------------------------------------------
             .state('notFound', {
                 url: '/notFound',
