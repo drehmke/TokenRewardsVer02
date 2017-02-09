@@ -20,6 +20,9 @@ namespace TokenRewardsVer02.Data
         public DbSet<Group> Groups { get; set; }
         public DbSet<Rank> Ranks { get; set; }
         public DbSet<Link> Links { get; set; }
+        public DbSet<Lecture> Lectures { get; set; }
+        public DbSet<Recognition> Recognitions { get; set; }
+        public DbSet<Story> Stories { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

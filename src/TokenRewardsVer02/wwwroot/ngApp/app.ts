@@ -169,6 +169,24 @@ namespace TokenRewardsVer02 {
                 controller: TokenRewardsVer02.Controllers.LinkController,
                 controllerAs: `c`
             })
+            .state(`lectureList`, {
+                url: `/admin/classes`,
+                templateUrl: `/ngApp/views/lectures/list.html`,
+                controller: TokenRewardsVer02.Controllers.LectureController,
+                controllerAs: `c`
+            })
+            .state(`recognitionList`, {
+                url: `/admin/service`,
+                templateUrl: `/ngApp/views/recognitions/list.html`,
+                controller: TokenRewardsVer02.Controllers.RecognitionController,
+                controllerAs: `c`
+            })
+            .state(`storyList`, {
+                url: `/admin/events`,
+                templateUrl: `/ngApp/views/stories/list.html`,
+                controller: TokenRewardsVer02.Controllers.StoriesController,
+                controllerAs: `c`
+            })
             // ----------------------------------------------------------------
             .state('notFound', {
                 url: '/notFound',
