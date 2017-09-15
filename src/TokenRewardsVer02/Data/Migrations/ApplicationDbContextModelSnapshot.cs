@@ -169,6 +169,10 @@ namespace TokenRewardsVer02.Data.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<int>("CharacterAllowance");
+
+                    b.Property<int>("CharacterTotal");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
@@ -214,6 +218,134 @@ namespace TokenRewardsVer02.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("TokenRewardsVer02.Models.Character", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateSubmitted");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("UserId");
+
+                    b.Property<int>("WufooFormId");
+
+                    b.Property<bool>("isActive");
+
+                    b.Property<bool>("isNpc");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Characters");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.Group", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<int?>("TypeId");
+
+                    b.Property<bool>("isActive");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TypeId");
+
+                    b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.GroupType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.Property<bool>("isAdmin");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GroupTypes");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.Lecture", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateHeld");
+
+                    b.Property<string>("PresenterId");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PresenterId");
+
+                    b.ToTable("Lectures");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.Link", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateAdded");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Url");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Links");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.Rank", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("BelongsToId");
+
+                    b.Property<int>("Level");
+
+                    b.Property<string>("Name");
+
+                    b.Property<bool>("isActive");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BelongsToId");
+
+                    b.ToTable("Ranks");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.Recognition", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("DateOfRecognition");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Log");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Recognitions");
+                });
+
             modelBuilder.Entity("TokenRewardsVer02.Models.Reward", b =>
                 {
                     b.Property<int>("Id")
@@ -248,6 +380,24 @@ namespace TokenRewardsVer02.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Rewards");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.Story", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("ForumLinkId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("WufooId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ForumLinkId");
+
+                    b.ToTable("Stories");
                 });
 
             modelBuilder.Entity("TokenRewardsVer02.Models.UserAchievements", b =>
@@ -322,6 +472,41 @@ namespace TokenRewardsVer02.Data.Migrations
                     b.HasOne("TokenRewardsVer02.Models.AchievementCategory", "AchievementCategory")
                         .WithMany("Achievments")
                         .HasForeignKey("AchievementCategoryId");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.Character", b =>
+                {
+                    b.HasOne("TokenRewardsVer02.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.Group", b =>
+                {
+                    b.HasOne("TokenRewardsVer02.Models.GroupType", "Type")
+                        .WithMany()
+                        .HasForeignKey("TypeId");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.Lecture", b =>
+                {
+                    b.HasOne("TokenRewardsVer02.Models.ApplicationUser", "Presenter")
+                        .WithMany()
+                        .HasForeignKey("PresenterId");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.Rank", b =>
+                {
+                    b.HasOne("TokenRewardsVer02.Models.Group", "BelongsTo")
+                        .WithMany()
+                        .HasForeignKey("BelongsToId");
+                });
+
+            modelBuilder.Entity("TokenRewardsVer02.Models.Story", b =>
+                {
+                    b.HasOne("TokenRewardsVer02.Models.Link", "ForumLink")
+                        .WithMany()
+                        .HasForeignKey("ForumLinkId");
                 });
 
             modelBuilder.Entity("TokenRewardsVer02.Models.UserAchievements", b =>
